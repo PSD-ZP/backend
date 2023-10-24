@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using service.Models;
 using service.Services;
-using service.Services.impl;
 
 namespace service.Controllers
 {
@@ -19,23 +18,19 @@ namespace service.Controllers
             _weatherService = weatherService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<Weather>> GetWeather()
+        [HttpPost]
+        [Route("GetWeatherByCoordinates")]
+        public async Task<ActionResult<Weather>> GetWeather([FromBody] Coordinates coordinates)
         {
 
-            var weather = _weatherService.createWeather();
-            if(weather == null)
-            {
-                return NotFound();
-            }
+            var weather = await _weatherService.getWeatherFromApiAsync(coordinates);
 
-
-            return Ok(weather);
+            return new JsonResult(weather);
         }
 
 
         [HttpPost]
-        public async Task<ActionResult<string>> Update(string? date)
+        public async Task<ActionResult<string>> Update([FromBody] string date)
         {
             if(date != "Monday")
             {

@@ -3,7 +3,7 @@
 namespace service.Services
 {
     public interface IWeatherService
-    {
-        Weather createWeather();
+    { 
+       Task<Weather> getWeatherFromApiAsync(Coordinates coordinates);
     }
 }

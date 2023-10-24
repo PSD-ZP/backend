@@ -2,8 +2,8 @@
 {
     public class Weather
     {
-        public Guid Id { get; set; }
-        public string? Day { get; set; }
-        public double Temperature { get; set; }
+        public Location Location { get; set; }
+        public Current Current { get; set; }
+        public Forecast Forecast { get; set; }
     }
 }
