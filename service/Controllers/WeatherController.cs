@@ -34,7 +34,7 @@ namespace service.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPost]
         public async Task<ActionResult<string>> Update(string? date)
         {
             if(date != "Monday")
