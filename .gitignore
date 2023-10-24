@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/service/config
+/.vs/service/FileContentIndex
+/.vs/service/v17/TestStore/0
+/.vs/service/v17
+/service/.config
+/service/bin
+/service/obj
+/service/Properties
