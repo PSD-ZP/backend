@@ -1,5 +1,4 @@
 ﻿using service.Models;
-using service.Models.CurrentWeather;
 using service.Models.Request;
 using service.Models.Response;
 
