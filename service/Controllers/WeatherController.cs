@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using service.Models;
+using service.Models.Request;
 using service.Services;
 
 namespace service.Controllers
@@ -20,24 +20,47 @@ namespace service.Controllers
 
         [HttpPost]
         [Route("GetWeatherByCoordinates")]
-        public async Task<ActionResult<Weather>> GetWeather([FromBody] Coordinates coordinates)
+        public async Task<IActionResult> GetWeather([FromBody] RequestCoordinates coordinates)
         {
+            if (!CheckCoordinate(coordinates))
+            {
+                return BadRequest();
+            }
+
 
             var weather = await _weatherService.getWeatherFromApiAsync(coordinates);
 
-            return new JsonResult(weather);
+            if (weather == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(weather);
+        }
+
+        [HttpPost]
+        [Route("GetWeatherOfLastHours")]
+        public async Task<IActionResult> GetWeatherByHours([FromBody] RequestCoordinates coordinates)
+        {
+            if (!CheckCoordinate(coordinates))
+            {
+                return BadRequest();
+            }
+
+            var weather = await _weatherService.getLastNHourWeather(coordinates);
+
+            if (weather == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(weather);
         }
 
 
-        [HttpPost]
-        public async Task<ActionResult<string>> Update([FromBody] string date)
+        private static bool CheckCoordinate(RequestCoordinates coordinates)
         {
-            if(date != "Monday")
-            {
-                return BadRequest($"Invalid day {date}");
-            }
-
-            return Ok(date);
+            return (coordinates.Latitude != null && coordinates.Longitude != null) || coordinates.Location != null;
         }
     }
 }
