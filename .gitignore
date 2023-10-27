@@ -12,3 +12,5 @@
 /service/Properties
 /.vs/service/DesignTimeBuild
 /.vs/ProjectEvaluation
+/ServiceTest/bin
+/ServiceTest/obj

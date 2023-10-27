@@ -10,6 +10,8 @@
 
         public double ChanceOfRain { get; set; }
         
+        public double Clouds { get; set; }
+
         public double ChanceOfSnow { get; set; }
     }
 }

@@ -19,26 +19,6 @@ namespace service.Controllers
         }
 
         [HttpPost]
-        [Route("GetWeatherByCoordinates")]
-        public async Task<IActionResult> GetWeather([FromBody] RequestCoordinates coordinates)
-        {
-            if (!CheckCoordinate(coordinates))
-            {
-                return BadRequest();
-            }
-
-
-            var weather = await _weatherService.getWeatherFromApiAsync(coordinates);
-
-            if (weather == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(weather);
-        }
-
-        [HttpPost]
         [Route("GetWeatherOfLastHours")]
         public async Task<IActionResult> GetWeatherByHours([FromBody] RequestCoordinates coordinates)
         {
@@ -60,7 +40,10 @@ namespace service.Controllers
 
         private static bool CheckCoordinate(RequestCoordinates coordinates)
         {
-            return (coordinates.Latitude != null && coordinates.Longitude != null) || coordinates.Location != null;
+            if ((coordinates.Latitude == null && coordinates.Longitude != null) || (coordinates.Latitude != null && coordinates.Longitude == null))
+                return false;
+
+            return ((coordinates.Latitude != null && coordinates.Longitude != null) || coordinates.Location != null);
         }
     }
 }

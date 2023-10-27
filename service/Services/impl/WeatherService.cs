@@ -123,6 +123,7 @@ namespace service.Services.impl
             forecast.DateTime = DateTime.ParseExact(hour.time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
             forecast.Temperature = double.Parse(hour.temp_c);
             forecast.WindKmph = double.Parse(hour.wind_kph);
+            forecast.Clouds = double.Parse(hour.cloud);
             forecast.ChanceOfRain = double.Parse(hour.chance_of_rain);
             forecast.ChanceOfSnow = double.Parse(hour.chance_of_snow);
 

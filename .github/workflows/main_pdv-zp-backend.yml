@@ -19,13 +19,19 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '7.x'
+          dotnet-version: '6.x'
           include-prerelease: true
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
-      - name: dotnet publish
+      - name: Run Unit Tests
+        run: dotnet test --configuration Release --filter Category=UnitTest
+
+      - name: Run Unit Tests
+        run: dotnet test --configuration Release --filter Category=IntegrationTest
+
+      - name: Publish to folder for deployment to a hosting system
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
