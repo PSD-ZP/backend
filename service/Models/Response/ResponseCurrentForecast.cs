@@ -1,4 +1,4 @@
-﻿namespace service.Models.Response
+﻿namespace WeatherHandler.Response
 {
     public class ResponseCurrentForecast
     {
@@ -9,7 +9,7 @@
         public double WindKmph { get; set; }
 
         public double ChanceOfRain { get; set; }
-        
+
         public double Clouds { get; set; }
 
         public double ChanceOfSnow { get; set; }

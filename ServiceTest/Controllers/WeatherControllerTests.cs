@@ -4,11 +4,11 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using Newtonsoft.Json;
 using service.Controllers;
-using service.Models.Request;
-using service.Models.Response;
 using service.Services;
 using System.Net;
 using System.Text;
+using WeatherHandler.Request;
+using WeatherHandler.Response;
 
 namespace ServiceTest.Controllers
 {

@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using service.Models;
-using service.Models.Request;
-using service.Models.Response;
 using System.Globalization;
+using WeatherHandler;
+using WeatherHandler.Request;
+using WeatherHandler.Response;
 
 namespace service.Services.impl
 {

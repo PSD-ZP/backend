@@ -3,7 +3,7 @@ using ClothesHandler.Models;
 
 namespace ClothesHandler.Factory.MaterialsFactory
 {
-    public static class MaterialFactory
+    internal static class MaterialFactory
     {
         public static Material GetMaterial(MaterialsEnum materialType)
         {

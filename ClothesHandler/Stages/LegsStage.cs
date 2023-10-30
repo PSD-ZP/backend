@@ -1,20 +1,20 @@
-﻿using ClothesHandler.Enums;
+﻿using ClothesHandler.Calculator;
+using ClothesHandler.Enums;
 using ClothesHandler.Factory.BodyItemsFactory;
 using ClothesHandler.Models;
-using service.Models.Response;
 
 namespace ClothesHandler.Stages
 {
     internal class LegsStage : DefaultBodyPartStage
     {
-        public LegsStage(ResponseCurrentForecast responseCurrentForecast) : base(responseCurrentForecast)
+        public LegsStage(CurrentForecast currentForecast) : base(currentForecast)
         {
         }
 
         public override List<ClothesItem> GetClothesItem()
         {
-            double temperature = _responseCurrentForecast.Temperature;
-            double wind = _responseCurrentForecast.WindKmph;
+            double temperature = _currentForecast.Temperature;
+            double wind = _currentForecast.WindKmph;
 
             List<ClothesItem> clothesItem = new List<ClothesItem>();
 

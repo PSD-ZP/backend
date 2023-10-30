@@ -1,6 +1,6 @@
-﻿using service.Models;
-using service.Models.Request;
-using service.Models.Response;
+﻿using WeatherHandler;
+using WeatherHandler.Request;
+using WeatherHandler.Response;
 
 namespace service.Services
 {

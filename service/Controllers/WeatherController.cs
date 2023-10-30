@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using service.Models.Request;
 using service.Services;
+using WeatherHandler.Request;
 
 namespace service.Controllers
 {

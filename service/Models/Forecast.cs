@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace service.Models
+namespace WeatherHandler
 {
     public class Forecast
     {

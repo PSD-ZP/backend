@@ -1,15 +1,15 @@
-﻿using ClothesHandler.Models;
-using service.Models.Response;
+﻿using ClothesHandler.Calculator;
+using ClothesHandler.Models;
 
 namespace ClothesHandler.Stages
 {
     internal abstract class DefaultBodyPartStage
     {
-        private protected readonly ResponseCurrentForecast _responseCurrentForecast;
+        private protected readonly CurrentForecast _currentForecast;
 
-        protected DefaultBodyPartStage(ResponseCurrentForecast responseCurrentForecast) 
+        protected DefaultBodyPartStage(CurrentForecast currentForecast) 
         {
-            _responseCurrentForecast = responseCurrentForecast;
+            _currentForecast = currentForecast;
         }
 
 

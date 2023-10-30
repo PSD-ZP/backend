@@ -1,7 +1,7 @@
 ﻿
 namespace ClothesHandler.Enums
 {
-    public enum MaterialsEnum
+    internal enum MaterialsEnum
     {
         Cotton,
         Wool,

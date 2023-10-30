@@ -1,5 +1,4 @@
-﻿
-namespace service.Models
+﻿namespace WeatherHandler
 {
     public class Current
     {

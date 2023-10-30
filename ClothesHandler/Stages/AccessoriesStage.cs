@@ -1,20 +1,20 @@
-﻿using ClothesHandler.Enums;
+﻿using ClothesHandler.Calculator;
+using ClothesHandler.Enums;
 using ClothesHandler.Factory.BodyItemsFactory;
 using ClothesHandler.Models;
-using service.Models.Response;
 
 namespace ClothesHandler.Stages
 {
     internal class AccessoriesStage : DefaultBodyPartStage
     {
-        public AccessoriesStage(ResponseCurrentForecast responseCurrentForecast) : base(responseCurrentForecast)
+        public AccessoriesStage(CurrentForecast currentForecast) : base(currentForecast)
         {
         }
 
         public override List<ClothesItem> GetClothesItem()
         {
-            bool isRaining = _responseCurrentForecast.ChanceOfRain > 85;
-            bool isSnowing = _responseCurrentForecast.ChanceOfSnow > 85;
+            bool isRaining = _currentForecast.ChanceOfRain > 85;
+            bool isSnowing = _currentForecast.ChanceOfSnow > 85;
 
             List<ClothesItem> clothesItem = new List<ClothesItem>();
 

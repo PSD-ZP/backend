@@ -1,5 +1,4 @@
-﻿
-namespace service.Models.Response
+﻿namespace WeatherHandler.Response
 {
     public class ResponseCurrentWeather
     {

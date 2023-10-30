@@ -1,21 +1,19 @@
 ﻿using ClothesHandler.Models;
 using ClothesHandler.Stages;
-using service.Models.Response;
 
-namespace ClothesHandler
+namespace ClothesHandler.Calculator
 {
-    public class RecommendationCalculator
+    public class RecommendationCalculator : IRecommendationCalculator
     {
-        private protected readonly ResponseCurrentForecast _responseCurrentForecast;
-        public RecommendationCalculator(ResponseCurrentForecast responseCurrentForecast) 
+        public RecommendationCalculator()
         {
-            _responseCurrentForecast = responseCurrentForecast;
         }
 
-        public BodyPart GetClothes()
+        public BodyPart GetClothes(double temp, double wind, double chanceOfRain, double clouds, double changeOfSnows)
         {
             BodyPart bodyPart = new BodyPart();
-            StagesFactory stagesFactory = new StagesFactory(_responseCurrentForecast);
+            CurrentForecast currentForecast = new CurrentForecast(temp, wind, chanceOfRain, clouds, changeOfSnows);
+            StagesFactory stagesFactory = new StagesFactory(currentForecast);
 
             List<DefaultBodyPartStage> defaultBodyPartStages = stagesFactory.StageOrder();
 
