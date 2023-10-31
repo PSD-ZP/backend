@@ -25,3 +25,21 @@ or
   "location": "New York"
 }
 ```
+
+### Get clothes
+
+[URI] : **/GetClothes**
+
+[Method] : **POST**
+
+[BODY] : 
+
+```json
+{
+  "temp": 0,
+  "wind": 0,
+  "clouds": 0,
+  "rain": 0,
+  "snow": 90
+}
+```
