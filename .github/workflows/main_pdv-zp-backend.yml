@@ -28,7 +28,7 @@ jobs:
       - name: Run Unit Tests
         run: dotnet test --configuration Release --filter Category=UnitTest
 
-      - name: Run Unit Tests
+      - name: Run Integration Tests
         run: dotnet test --configuration Release --filter Category=IntegrationTest
 
       - name: Publish to folder for deployment to a hosting system
