@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using service.Services;
-using WeatherHandler.Request;
+using ServicePVD.Models.Request;
+using ServicePVD.Services;
 
-namespace service.Controllers
+namespace ServicePVD.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
+using ServicePVD.Models;
+using ServicePVD.Models.Request;
+using ServicePVD.Models.Response;
 using System.Globalization;
-using WeatherHandler;
-using WeatherHandler.Request;
-using WeatherHandler.Response;
 
-namespace service.Services.impl
+namespace ServicePVD.Services.impl
 {
     public class WeatherService : IWeatherService
     {

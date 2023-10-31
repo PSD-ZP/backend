@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherHandler.Request
+namespace ServicePVD.Models.Request
 {
     public class RequestCoordinates
     {

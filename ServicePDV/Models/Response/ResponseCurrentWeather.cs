@@ -1,4 +1,4 @@
-﻿namespace WeatherHandler.Response
+﻿namespace ServicePVD.Models.Response
 {
     public class ResponseCurrentWeather
     {

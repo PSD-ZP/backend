@@ -1,6 +1,6 @@
 using ClothesHandler.Calculator;
-using service.Services;
-using service.Services.impl;
+using ServicePVD.Services;
+using ServicePVD.Services.impl;
 
 var builder = WebApplication.CreateBuilder(args);
 

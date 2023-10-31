@@ -1,4 +1,4 @@
-﻿namespace WeatherHandler
+﻿namespace ServicePVD.Models
 {
     public class Weather
     {

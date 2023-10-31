@@ -1,8 +1,8 @@
-﻿using WeatherHandler;
-using WeatherHandler.Request;
-using WeatherHandler.Response;
+﻿using ServicePVD.Models;
+using ServicePVD.Models.Request;
+using ServicePVD.Models.Response;
 
-namespace service.Services
+namespace ServicePVD.Services
 {
     public interface IWeatherService
     {
