@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\service\service.csproj" />
+    <ProjectReference Include="..\ServicePDV\ServicePDV.csproj" />
   </ItemGroup>
 
   <ItemGroup>

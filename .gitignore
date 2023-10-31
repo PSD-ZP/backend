@@ -9,8 +9,13 @@
 /service/.config
 /service/bin
 /service/obj
-/service/Properties
 /.vs/service/DesignTimeBuild
 /.vs/ProjectEvaluation
 /ServiceTest/bin
 /ServiceTest/obj
+/ClothesHandler/obj
+/.vs
+/ClothesHandler/bin/Debug/net6.0
+/ClothesHandler/bin/Release/net6.0
+/ServicePDV/bin
+/ServicePDV/obj
