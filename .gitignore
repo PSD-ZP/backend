@@ -9,7 +9,6 @@
 /service/.config
 /service/bin
 /service/obj
-/service/Properties
 /.vs/service/DesignTimeBuild
 /.vs/ProjectEvaluation
 /ServiceTest/bin

@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Newtonsoft.Json;
-using service.Controllers;
-using service.Models.Request;
-using service.Models.Response;
-using service.Services;
+using ServicePVD.Controllers;
+using ServicePVD.Models.Request;
+using ServicePVD.Models.Response;
+using ServicePVD.Services;
 using System.Net;
 using System.Text;
 
