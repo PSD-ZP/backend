@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Models;
-using service.Services;
-using service.Services.impl;
+using ClothesHandler.Calculator;
+using ServicePVD.Services;
+using ServicePVD.Services.impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +19,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
 
+builder.Services.AddSingleton<IRecommendationCalculator, RecommendationCalculator>();
+builder.Services.AddScoped<IClothesService, ClothesService>();
 builder.Services.AddScoped<IWeatherService, WeatherService>();
 
 var app = builder.Build();

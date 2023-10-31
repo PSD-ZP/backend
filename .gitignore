@@ -14,3 +14,11 @@
 /.vs/ProjectEvaluation
 /ServiceTest/bin
 /ServiceTest/obj
+/.vs
+/ClothesHandler/bin
+/ClothesHandler/obj/Debug/net6.0
+/ClothesHandler/obj
+/ServicePDV/bin
+/ServicePDV/obj/Debug/net6.0
+/ServicePDV/obj/Release/net6.0
+/ServicePDV/obj
