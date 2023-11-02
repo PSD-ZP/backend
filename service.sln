@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "service", "service\service.csproj", "{EDA6DD3A-2430-4437-B826-393FF36A3339}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicePDV", "ServicePDV\ServicePDV.csproj", "{EDA6DD3A-2430-4437-B826-393FF36A3339}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceTest", "ServiceTest\ServiceTest.csproj", "{73F0C043-E755-449B-89A3-EA88787AA994}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClothesHandler", "ClothesHandler\ClothesHandler.csproj", "{D07105A6-8758-4FCE-8C8F-5724ED80E25C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{EDA6DD3A-2430-4437-B826-393FF36A3339}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDA6DD3A-2430-4437-B826-393FF36A3339}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDA6DD3A-2430-4437-B826-393FF36A3339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F0C043-E755-449B-89A3-EA88787AA994}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F0C043-E755-449B-89A3-EA88787AA994}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F0C043-E755-449B-89A3-EA88787AA994}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F0C043-E755-449B-89A3-EA88787AA994}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D07105A6-8758-4FCE-8C8F-5724ED80E25C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D07105A6-8758-4FCE-8C8F-5724ED80E25C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D07105A6-8758-4FCE-8C8F-5724ED80E25C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D07105A6-8758-4FCE-8C8F-5724ED80E25C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
