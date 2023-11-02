@@ -12,3 +12,7 @@
 /service/Properties
 /.vs/service/DesignTimeBuild
 /.vs/ProjectEvaluation
+.vs/service/xs/UserPrefs.xml
+.vs/service/xs/project-cache/service-Debug.json
+.vscode/launch.json
+.vscode/tasks.json
