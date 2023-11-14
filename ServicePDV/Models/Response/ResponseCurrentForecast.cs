@@ -13,5 +13,9 @@
         public double Clouds { get; set; }
 
         public double ChanceOfSnow { get; set; }
+
+        public double Precipitation { get; set; }
+
+        public double Humidity { get; set; }
     }
 }

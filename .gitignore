@@ -21,3 +21,8 @@
 /ServicePDV/obj/Debug/net6.0
 /ServicePDV/obj/Release/net6.0
 /ServicePDV/obj
+/PlaygroundWeatherState/bin/Debug/net6.0
+/PlaygroundWeatherState/obj/Debug/net6.0
+/PlaygroundWeatherState/obj
+/PlaygroundWeatherStateTest/bin/Debug/net6.0
+/PlaygroundWeatherStateTest/obj

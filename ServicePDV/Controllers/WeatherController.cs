@@ -27,7 +27,7 @@ namespace ServicePVD.Controllers
                 return BadRequest();
             }
 
-            var weather = await _weatherService.getLastNHourWeather(coordinates);
+            var weather = await _weatherService.GetLast4HourWeather(coordinates);
 
             if (weather == null)
             {
@@ -37,6 +37,19 @@ namespace ServicePVD.Controllers
             return Ok(weather);
         }
 
+        [HttpPost]
+        [Route("GetWetnessScore")]
+        public async Task<IActionResult> GetWetnessScoreInfo([FromBody] RequestCoordinates coordinates)
+        {
+            if (!CheckCoordinate(coordinates))
+            {
+                return BadRequest();
+            }
+
+            var weather = await _weatherService.GetDryingHours(coordinates);
+
+            return Ok(weather);
+        }
 
         private static bool CheckCoordinate(RequestCoordinates coordinates)
         {

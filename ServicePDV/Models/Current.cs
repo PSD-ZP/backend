@@ -20,6 +20,8 @@
 
         public string Cloud { get; set; } = default!;
 
+        public string Precip_Mm { get; set; } = default!;
+
         public string Feelslike_C { get; set; } = default!;
 
         public string Vis_km { get; set; } = default!;

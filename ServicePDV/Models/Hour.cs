@@ -28,6 +28,8 @@
 
         public string will_it_rain { get; set; }
 
+        public string precip_mm { get; set; }
+
         public string chance_of_rain { get; set; }
 
         public string will_it_snow { get; set; }

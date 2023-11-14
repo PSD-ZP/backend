@@ -106,7 +106,7 @@ namespace ServiceTest.Controllers
             };
 
             var weatherServiceMock = new Mock<IWeatherService>();
-            weatherServiceMock.Setup(service => service.getLastNHourWeather(validCoordinates))
+            weatherServiceMock.Setup(service => service.GetLast4HourWeather(validCoordinates))
                         .ReturnsAsync(expectedWeatherData);
 
             var weatherController = new WeatherController(loggerMock.Object, weatherServiceMock.Object);

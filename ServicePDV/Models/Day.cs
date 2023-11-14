@@ -22,6 +22,8 @@
 
         public string daily_chance_of_snow { get; set; } = default!;
 
+        public string totalprecip_mm { get; set; } = default!;
+
         public Condition condition { get; set; } = default!;
 
         public string uv { get; set; } = default!;
