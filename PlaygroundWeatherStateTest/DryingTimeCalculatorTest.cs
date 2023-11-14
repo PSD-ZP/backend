@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using Moq;
 using PlaygroundWeatherState.DryCalculator;
 using PlaygroundWeatherState.Models;
@@ -77,7 +78,7 @@ namespace PlaygroundWeatherStateTest
             dryingInfos.Add(dryingInfo3);
             dryingInfos.Add(dryingInfo4);
 
-            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object);
+            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
             wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.05);
 
             int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
@@ -155,7 +156,7 @@ namespace PlaygroundWeatherStateTest
             dryingInfos.Add(dryingInfo3);
             dryingInfos.Add(dryingInfo4);
 
-            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object);
+            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
             wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.795);
 
             int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
@@ -232,7 +233,7 @@ namespace PlaygroundWeatherStateTest
             dryingInfos.Add(dryingInfo3);
             dryingInfos.Add(dryingInfo4);
 
-            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object);
+            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
             wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.758);
 
             int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
@@ -309,7 +310,7 @@ namespace PlaygroundWeatherStateTest
             dryingInfos.Add(dryingInfo3);
             dryingInfos.Add(dryingInfo4);
 
-            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object);
+            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
             wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.152);
 
             int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
@@ -386,7 +387,7 @@ namespace PlaygroundWeatherStateTest
             dryingInfos.Add(dryingInfo3);
             dryingInfos.Add(dryingInfo4);
 
-            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object);
+            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
             wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.033);
 
             int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
@@ -463,7 +464,7 @@ namespace PlaygroundWeatherStateTest
             dryingInfos.Add(dryingInfo3);
             dryingInfos.Add(dryingInfo4);
 
-            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object);
+            DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
             wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.708);
 
             int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
