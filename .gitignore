@@ -26,3 +26,7 @@
 /PlaygroundWeatherState/obj
 /PlaygroundWeatherStateTest/bin/Debug/net6.0
 /PlaygroundWeatherStateTest/obj
+.vs/service/xs/UserPrefs.xml
+.vs/service/xs/project-cache/service-Debug.json
+.vscode/launch.json
+.vscode/tasks.json
