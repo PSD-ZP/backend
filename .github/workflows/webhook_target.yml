@@ -1,5 +1,5 @@
 name: delete calling job's artifacts
-on: repository_dispatch
+on: workflow_dispatch
 jobs:
   main:
     runs-on: ubuntu-latest
