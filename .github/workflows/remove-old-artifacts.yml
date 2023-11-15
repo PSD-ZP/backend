@@ -14,17 +14,16 @@ jobs:
         script: |
           const { owner, repo } = context.repo;
 
-          const response = await github.actions.listArtifactsForRepo({
+          const artifacts = await github.rest.actions.listArtifactsForRepo({
             owner,
             repo
           });
 
-          for (const artifact of response.data.artifacts) {
-            await github.actions.deleteArtifact({
+          for (const artifact of artifacts.data.artifacts) {
+            await github.rest.actions.deleteArtifact({
               owner,
               repo,
               artifact_id: artifact.id
             });
             console.log(`Deleted artifact: ${artifact.name}`);
           }
-
