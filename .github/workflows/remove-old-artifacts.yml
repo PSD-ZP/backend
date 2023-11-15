@@ -12,9 +12,9 @@ jobs:
       uses: actions/github-script@v5
       with:
         script: |
-          const { context, github } = require('@actions/github');
+          const { context: ctx, github } = require('@actions/github');
           
-          const { owner, repo } = context.repo;
+          const { owner, repo } = ctx.repo;
           
           const response = await github.actions.listArtifactsForRepo({
             owner,
@@ -28,4 +28,4 @@ jobs:
               artifact_id: artifact.id
             });
             console.log(`Deleted artifact: ${artifact.name}`);
-          }' 
+          }
