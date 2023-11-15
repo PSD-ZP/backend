@@ -1,12 +1,12 @@
 name: delete calling job's artifacts
 on: workflow_dispatch
 jobs:
-  remove-old-artifacts:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-
     steps:
-    - name: Remove old artifacts
-      uses: c-hive/gha-remove-artifacts@v1
-      with:
-        age: '5 days'
+      - uses: actions/checkout@v1
+      - name: Weekly Artifact Cleanup
+        uses: jimschubert/delete-artifacts-action@v1
+        with:
+          log_level: 'error'
+          min_bytes: '0'
