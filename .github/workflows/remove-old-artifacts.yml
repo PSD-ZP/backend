@@ -8,22 +8,7 @@ jobs:
     timeout-minutes: 10
 
     steps:
-    - name: Remove all artifacts
-      uses: actions/github-script@v5
+    - name: Remove old artifacts
+      uses: ./.github/actions/gha-remove-artifacts-master
       with:
-        script: |
-          const { owner, repo } = context.repo;
-
-          const artifacts = await github.rest.actions.listArtifactsForRepo({
-            owner,
-            repo
-          });
-
-          for (const artifact of artifacts.data.artifacts) {
-            await github.rest.actions.deleteArtifact({
-              owner,
-              repo,
-              artifact_id: artifact.id
-            });
-            console.log(`Deleted artifact: ${artifact.name}`);
-          }
+        age: '0 days'
