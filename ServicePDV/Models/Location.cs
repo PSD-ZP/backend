@@ -4,14 +4,10 @@ namespace ServicePVD.Models
 {
     public class Location
     {
-
-        [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
-        [JsonProperty("region")]
         public string Region { get; set; } = default!;
 
-        [JsonProperty("country")]
         public string Country { get; set; } = default!;
 
         [JsonProperty("lat")]
@@ -26,7 +22,6 @@ namespace ServicePVD.Models
         [JsonProperty("localtime_epoch")]
         public int LocalTimeEpoch { get; set; } = default!;
 
-        [JsonProperty("localtime")]
         public string LocalTime { get; set; } = default!;
     }
 

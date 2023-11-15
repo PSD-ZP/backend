@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PlaygroundWeatherState.DryCalculator;
 using PlaygroundWeatherState.Models;
-using PlaygroundWeatherState.WetnessScoreCalculator;
-using ServicePDV.Models.Response;
 using ServicePVD.Models;
 using ServicePVD.Models.Request;
 using ServicePVD.Models.Response;
@@ -75,9 +73,9 @@ namespace ServicePVD.Services.impl
                 Weather weather = await GetWeatherFromApiAsync(dateApiUrl);
 
                 WetnessInfo responseWetnessData = new WetnessInfo();
-                responseWetnessData.Precipitation = double.Parse(weather.Forecast.Forecastdays[0].day.totalprecip_mm);
-                responseWetnessData.Humidity = double.Parse(weather.Forecast.Forecastdays[0].day.avghumidity);
-                responseWetnessData.Temperature = double.Parse(weather.Forecast.Forecastdays[0].day.avgtemp_c);
+                responseWetnessData.Precipitation = double.Parse(weather.Forecast.Forecastdays[0].Day.TotalPrecipitation);
+                responseWetnessData.Humidity = double.Parse(weather.Forecast.Forecastdays[0].Day.AvgHumidity);
+                responseWetnessData.Temperature = double.Parse(weather.Forecast.Forecastdays[0].Day.AvgTemperature);
 
                 wetnessDatas.Add(responseWetnessData);
             }
@@ -151,7 +149,7 @@ namespace ServicePVD.Services.impl
             if (onlyToday)
             {
                 _logger.LogDebug("Response is created only from the last 4 hours of the day.");
-                IEnumerable<Hour> hours = weather.Forecast.Forecastdays[0].hour.GetRange(parsedDateTime.Hour, 4);
+                IEnumerable<Hour> hours = weather.Forecast.Forecastdays[0].Hour.GetRange(parsedDateTime.Hour, 4);
 
                 foreach (var hour in hours)
                 {
@@ -161,7 +159,7 @@ namespace ServicePVD.Services.impl
             }
             else
             {
-                IEnumerable<Hour> hours = weather.Forecast.Forecastdays[0].hour.Skip(parsedDateTime.Hour);
+                IEnumerable<Hour> hours = weather.Forecast.Forecastdays[0].Hour.Skip(parsedDateTime.Hour);
                 int todayNumOfHours = hours.Count();
                 int tommorowNumOfHours = 4 - todayNumOfHours;
 
@@ -173,7 +171,7 @@ namespace ServicePVD.Services.impl
                     currentForecasts.Add(forecast);
                 }
 
-                hours = weather.Forecast.Forecastdays[1].hour.GetRange(0, tommorowNumOfHours);
+                hours = weather.Forecast.Forecastdays[1].Hour.GetRange(0, tommorowNumOfHours);
                 foreach (var hour in hours)
                 {
                     ResponseCurrentForecast forecast = CreateResponseCurrentForecast(hour);
@@ -194,14 +192,14 @@ namespace ServicePVD.Services.impl
         private ResponseCurrentForecast CreateResponseCurrentForecast(Hour hour)
         {
             ResponseCurrentForecast forecast = new ResponseCurrentForecast();
-            forecast.DateTime = DateTime.ParseExact(hour.time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
-            forecast.Temperature = double.Parse(hour.temp_c);
-            forecast.WindKmph = double.Parse(hour.wind_kph);
-            forecast.Clouds = double.Parse(hour.cloud);
-            forecast.ChanceOfRain = double.Parse(hour.chance_of_rain);
-            forecast.ChanceOfSnow = double.Parse(hour.chance_of_snow);
-            forecast.Precipitation = double.Parse(hour.precip_mm);
-            forecast.Humidity = double.Parse(hour.humidity);
+            forecast.DateTime = DateTime.ParseExact(hour.Time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+            forecast.Temperature = double.Parse(hour.Temperature);
+            forecast.WindKmph = double.Parse(hour.WindKmph);
+            forecast.Clouds = double.Parse(hour.Cloud);
+            forecast.ChanceOfRain = double.Parse(hour.ChanceOfRain);
+            forecast.ChanceOfSnow = double.Parse(hour.ChanceOfSnow);
+            forecast.Precipitation = double.Parse(hour.Precipitation);
+            forecast.Humidity = double.Parse(hour.Humidity);
             _logger.LogDebug("Created forecast entity.");
 
             return forecast;

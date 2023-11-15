@@ -1,19 +1,24 @@
-﻿namespace ServicePVD.Models
+﻿using Newtonsoft.Json;
+
+namespace ServicePVD.Models
 {
     public class Astro
     {
-        public string sunrise { get; set; } = default!;
+        public string Sunrise { get; set; } = default!;
 
-        public string sunset { get; set; } = default!;
+        public string Sunset { get; set; } = default!;
 
-        public string moonrise { get; set; } = default!;
+        public string Moonrise { get; set; } = default!;
 
-        public string moonset { get; set; } = default!;
+        public string Moonset { get; set; } = default!;
 
-        public string moon_phase { get; set; } = default!;
+        [JsonProperty("moon_phase")]
+        public string MoonPhase { get; set; } = default!;
 
-        public string is_moon_up { get; set; }  = default!;
+        [JsonProperty("is_moon_up")]
+        public string IsMoonUp { get; set; }  = default!;
 
-        public string is_sun_up { get; set; } = default!;
+        [JsonProperty("is_sun_up")]
+        public string IsSunUp { get; set; } = default!;
     }
 }

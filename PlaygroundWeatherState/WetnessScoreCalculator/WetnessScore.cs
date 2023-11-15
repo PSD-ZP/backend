@@ -86,10 +86,12 @@ namespace PlaygroundWeatherState.WetnessScoreCalculator
                 avgPrecipitation = wetnessDatas[0].Humidity;
             }
 
-            WetnessInfo responseWetnessData = new WetnessInfo();
-            responseWetnessData.Precipitation = avgPrecipitation;
-            responseWetnessData.Humidity = avgHumidity;
-            responseWetnessData.Temperature = avgTemperature;
+            WetnessInfo responseWetnessData = new WetnessInfo
+            {
+                Precipitation = avgPrecipitation,
+                Humidity = avgHumidity,
+                Temperature = avgTemperature
+            };
 
             return responseWetnessData;
         }

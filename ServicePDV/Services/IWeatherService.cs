@@ -1,5 +1,4 @@
 ﻿using PlaygroundWeatherState.Models;
-using ServicePDV.Models.Response;
 using ServicePVD.Models;
 using ServicePVD.Models.Request;
 using ServicePVD.Models.Response;

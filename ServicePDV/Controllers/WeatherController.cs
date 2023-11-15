@@ -8,13 +8,10 @@ namespace ServicePVD.Controllers
     [Route("[controller]")]
     public class WeatherController : ControllerBase
     {
-
-        private readonly ILogger<WeatherController> _logger;
         private readonly IWeatherService _weatherService;
 
-        public WeatherController(ILogger<WeatherController> logger, IWeatherService weatherService)
+        public WeatherController(IWeatherService weatherService)
         {
-            _logger = logger;
             _weatherService = weatherService;
         }
 
@@ -23,16 +20,12 @@ namespace ServicePVD.Controllers
         public async Task<IActionResult> GetWeatherByHours([FromBody] RequestCoordinates coordinates)
         {
             if (!CheckCoordinate(coordinates))
-            {
                 return BadRequest();
-            }
 
             var weather = await _weatherService.GetLast4HourWeather(coordinates);
 
             if (weather == null)
-            {
                 return NotFound();
-            }
 
             return Ok(weather);
         }
@@ -42,9 +35,7 @@ namespace ServicePVD.Controllers
         public async Task<IActionResult> GetWetnessScoreInfo([FromBody] RequestCoordinates coordinates)
         {
             if (!CheckCoordinate(coordinates))
-            {
                 return BadRequest();
-            }
 
             var weather = await _weatherService.GetDryingHours(coordinates);
 

@@ -17,7 +17,6 @@ namespace ServiceTest.Controllers
     internal class WeatherControllerTests
     {
         private WeatherController weatherController;
-        private Mock<ILogger<WeatherController>> loggerMock;
         private Mock<IWeatherService> weatherServiceMock;
 
         private WebApplicationFactory<Program> factory;
@@ -26,9 +25,8 @@ namespace ServiceTest.Controllers
         [SetUp]
         public void StartUp()
         {
-            loggerMock = new Mock<ILogger<WeatherController>>();
             weatherServiceMock = new Mock<IWeatherService>();
-            weatherController = new WeatherController(loggerMock.Object, weatherServiceMock.Object);
+            weatherController = new WeatherController(weatherServiceMock.Object);
 
             factory = new WebApplicationFactory<Program>();
             client = factory.CreateClient();
@@ -80,7 +78,6 @@ namespace ServiceTest.Controllers
         [Category("UnitTest")]
         public async Task GetWeatherByHours_ValidInput_Location_ReturnsOk()
         {
-            // Arrange
             var validCoordinates = new RequestCoordinates
             {
                 Latitude = null,
@@ -109,7 +106,7 @@ namespace ServiceTest.Controllers
             weatherServiceMock.Setup(service => service.GetLast4HourWeather(validCoordinates))
                         .ReturnsAsync(expectedWeatherData);
 
-            var weatherController = new WeatherController(loggerMock.Object, weatherServiceMock.Object);
+            var weatherController = new WeatherController(weatherServiceMock.Object);
 
             var result = await weatherController.GetWeatherByHours(validCoordinates) as OkObjectResult;
             var responseContent = result!.Value as ResponseCurrentWeather;

@@ -2,10 +2,10 @@
 {
     public class Weather
     {
-        public Location Location { get; set; }
+        public Location Location { get; set; } = default!;
 
-        public Current Current { get; set; }
+        public Current Current { get; set; } = default!;
 
-        public Forecast Forecast { get; set; }
+        public Forecast Forecast { get; set; } = default!;
     }
 }

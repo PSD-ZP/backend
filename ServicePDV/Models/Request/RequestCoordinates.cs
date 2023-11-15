@@ -10,7 +10,6 @@ namespace ServicePVD.Models.Request
         [JsonProperty("lon")]
         public string? Longitude { get; set; }
 
-        [JsonProperty("location")]
         public string? Location { get; set; }
     }
 }

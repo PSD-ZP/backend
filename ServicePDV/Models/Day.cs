@@ -1,31 +1,43 @@
-﻿namespace ServicePVD.Models
+﻿using Newtonsoft.Json;
+
+namespace ServicePVD.Models
 {
     public class Day
     {
-        public string maxtemp_c { get; set; } = default!;
+        [JsonProperty("maxtemp_c")]
+        public string MaxTemperature { get; set; } = default!;
 
-        public string mintemp_c { get; set; } = default!;
+        [JsonProperty("mintemp_c")]
+        public string MinTemperature { get; set; } = default!;
 
-        public string avgtemp_c { get; set; } = default!;
+        [JsonProperty("avgtemp_c")]
+        public string AvgTemperature { get; set; } = default!;
 
-        public string maxwind_kph { get; set; } = default!;
+        [JsonProperty("maxwind_kph")]
+        public string MaxWindKmph { get; set; } = default!;
 
-        public string totalsnow_cm { get; set; } = default!;
+        [JsonProperty("totalsnow_cm")]
+        public string TotalSnowCm { get; set; } = default!;
 
-        public string avghumidity { get; set; } = default!;
+        public string AvgHumidity { get; set; } = default!;
 
-        public string daily_will_it_rain { get; set; } = default!;
+        [JsonProperty("daily_will_it_rain")]
+        public string DailyWillItRain { get; set; } = default!;
 
-        public string daily_chance_of_rain { get; set; } = default!;        
+        [JsonProperty("daily_chance_of_rain")]
+        public string DailyChanceOfRain { get; set; } = default!;
 
-        public string daily_will_it_snow { get; set; } = default!;
+        [JsonProperty("daily_will_it_snow")]
+        public string DailyWillItSnow { get; set; } = default!;
 
-        public string daily_chance_of_snow { get; set; } = default!;
+        [JsonProperty("daily_chance_of_snow")]
+        public string DailyChanceOfSnow { get; set; } = default!;
 
-        public string totalprecip_mm { get; set; } = default!;
+        [JsonProperty("totalprecip_mm")]
+        public string TotalPrecipitation { get; set; } = default!;
 
-        public Condition condition { get; set; } = default!;
+        public Condition Condition { get; set; } = default!;
 
-        public string uv { get; set; } = default!;
+        public string Uv { get; set; } = default!;
     }
 }

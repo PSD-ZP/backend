@@ -1,43 +1,59 @@
-﻿namespace ServicePVD.Models
+﻿using Newtonsoft.Json;
+
+namespace ServicePVD.Models
 {
     public class Hour
     {
-        public string time_epoch { get; set; }
+        [JsonProperty("time_epoch")]
+        public string TimeEpoch { get; set; } = default!;
 
-        public string time { get; set; }
+        public string Time { get; set; } = default!;
 
-        public string temp_c { get; set; }
+        [JsonProperty("temp_c")]
+        public string Temperature { get; set; } = default!;
 
-        public string is_day { get; set; }
+        [JsonProperty("is_day")]
+        public string IsDay { get; set; } = default!;
 
-        public Condition condition { get; set; }
+        public Condition Condition { get; set; } = default!;
 
-        public string wind_kph { get; set; }
+        [JsonProperty("wind_kph")]
+        public string WindKmph { get; set; } = default!;
 
-        public string wind_dir { get; set; }
+        [JsonProperty("wind_dir")]
+        public string WindDirection { get; set; } = default!;
 
-        public string pressure_in { get; set; }
+        [JsonProperty("pressure_in")]
+        public string PressureIn { get; set; } = default!;
 
-        public string humidity { get; set; }
+        public string Humidity { get; set; } = default!;
 
-        public string cloud { get; set; }
+        public string Cloud { get; set; } = default!;
 
-        public string feelslike_c { get; set; }
+        [JsonProperty("feelslike_c")]
+        public string FeelslikeTemperature { get; set; } = default!;
 
-        public string windchill_c { get; set; }
+        [JsonProperty("windchill_c")]
+        public string WindchillTemperature { get; set; } = default!;
 
-        public string will_it_rain { get; set; }
+        [JsonProperty("will_it_rain")]
+        public string WillItRain { get; set; } = default!;
 
-        public string precip_mm { get; set; }
+        [JsonProperty("precip_mm")]
+        public string Precipitation { get; set; } = default!;
 
-        public string chance_of_rain { get; set; }
+        [JsonProperty("chance_of_rain")]
+        public string ChanceOfRain { get; set; } = default!;
 
-        public string will_it_snow { get; set; }
+        [JsonProperty("will_it_snow")]
+        public string WillItSnow { get; set; } = default!;
 
-        public string chance_of_snow { get; set; }
+        [JsonProperty("chance_of_snow")]
+        public string ChanceOfSnow { get; set; } = default!;
 
-        public string vis_km { get; set; }
+        [JsonProperty("vis_km")]
+        public string VisKm { get; set; } = default!;
 
-        public string uv { get; set; }
+        public string Uv { get; set; } = default!;
     }
 }

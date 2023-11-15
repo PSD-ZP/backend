@@ -10,6 +10,7 @@ namespace PlaygroundWeatherStateTest
     public class DryingTimeCalculatorTest
     {
         [Test]
+        [Category("UnitTest")]
         public void WetnessScoreForDryAndHotDayTest()
         {
             Mock<IWetnessScore> wetnessScore = new Mock<IWetnessScore>();
@@ -87,6 +88,7 @@ namespace PlaygroundWeatherStateTest
         }
 
         [Test]
+        [Category("UnitTest")]
         public void HighWetnessScoreButUpcomingHoursAreHighTemperatureAndLowHumidityAndNoRainAndZeroCloudiness()
         {
 
@@ -165,6 +167,7 @@ namespace PlaygroundWeatherStateTest
         }
 
         [Test]
+        [Category("UnitTest")]
         public void LowWetnessScoreButInUpcomingHoursItIsRaining()
         {
             Mock<IWetnessScore> wetnessScore = new Mock<IWetnessScore>();
@@ -242,6 +245,7 @@ namespace PlaygroundWeatherStateTest
         }
 
         [Test]
+        [Category("UnitTest")]
         public void mixedWeatherStatsAndLowWetnessScore()
         {
             Mock<IWetnessScore> wetnessScore = new Mock<IWetnessScore>();
@@ -319,6 +323,7 @@ namespace PlaygroundWeatherStateTest
         }
 
         [Test]
+        [Category("UnitTest")]
         public void winterWeatherLowWetnessScore()
         {
             Mock<IWetnessScore> wetnessScore = new Mock<IWetnessScore>();
@@ -396,6 +401,7 @@ namespace PlaygroundWeatherStateTest
         }
 
         [Test]
+        [Category("UnitTest")]
         public void winterWeatherHighwWetnessScore()
         {
             Mock<IWetnessScore> wetnessScore = new Mock<IWetnessScore>();

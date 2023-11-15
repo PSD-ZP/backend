@@ -1,15 +1,18 @@
-﻿namespace ServicePVD.Models
+﻿using Newtonsoft.Json;
+
+namespace ServicePVD.Models
 {
     public class Forecastday
     {
-        public string Date { get; set; }
+        public string Date { get; set; } = default!;
 
-        public string date_epoch { get; set; }
+        [JsonProperty("date_epoch")]
+        public string DateEpoch { get; set; } = default!;
 
-        public Day day { get; set; }
+        public Day Day { get; set; } = default!;
 
-        public Astro astro { get; set; }
+        public Astro Astro { get; set; } = default!;
 
-        public List<Hour> hour { get; set; }
+        public List<Hour> Hour { get; set; } = default!;
     }
 }
