@@ -14,7 +14,7 @@ namespace PlaygroundWeatherState.WetnessScoreCalculator
 
             WetnessInfo avgWetnessInfo = CalculateAvgHumidityAndPrecipitaition(avgWetnessInfos);
 
-            double humidity = NormalizeValue(avgWetnessInfo.Humidity, 50, 90);
+            double humidity = NormalizeValue(avgWetnessInfo.Humidity, 30, 90);
             double precipitation = NormalizeValue(avgWetnessInfo.Precipitation, 0, 50);
 
             double wetnessScore = CalculateWetnessScore(humidity, precipitation);
@@ -55,24 +55,24 @@ namespace PlaygroundWeatherState.WetnessScoreCalculator
                         wetnessDatas.ForEach(x =>
                         {
                             avgHumidity += x.Humidity;
-                            avgPrecipitation += x.Precipitation;
+                            avgPrecipitation += x.Precipitation * 1.5;
                         });
                         break;
 
                     case > 23:
+                        avgPrecipitation += wetnessDatas[0].Precipitation * 0.8;
+                        avgPrecipitation += wetnessDatas[1].Precipitation * 0.2;
+
+                        avgHumidity += wetnessDatas[0].Humidity * 0.8;
+                        avgHumidity += wetnessDatas[1].Humidity * 0.2;
+                        break;
+
+                    default:
                         avgPrecipitation += wetnessDatas[0].Precipitation * 0.7;
                         avgPrecipitation += wetnessDatas[1].Precipitation * 0.3;
 
                         avgHumidity += wetnessDatas[0].Humidity * 0.7;
                         avgHumidity += wetnessDatas[1].Humidity * 0.3;
-                        break;
-
-                    default:
-                        avgPrecipitation += wetnessDatas[0].Precipitation * 0.6;
-                        avgPrecipitation += wetnessDatas[1].Precipitation * 0.4;
-
-                        avgHumidity += wetnessDatas[0].Humidity * 0.6;
-                        avgHumidity += wetnessDatas[1].Humidity * 0.4;
                         break;
                 }
 
@@ -83,7 +83,7 @@ namespace PlaygroundWeatherState.WetnessScoreCalculator
             {
                 avgTemperature = wetnessDatas[0].Temperature;
                 avgHumidity = wetnessDatas[0].Humidity;
-                avgPrecipitation = wetnessDatas[0].Humidity;
+                avgPrecipitation = wetnessDatas[0].Precipitation;
             }
 
             WetnessInfo responseWetnessData = new WetnessInfo

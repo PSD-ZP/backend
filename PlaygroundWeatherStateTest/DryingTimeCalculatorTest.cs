@@ -25,7 +25,7 @@ namespace PlaygroundWeatherStateTest
             };
 
 
-            WetnessInfo wetnessInfo2 = new WetnessInfo
+            WetnessInfo wetnessInfoToday = new WetnessInfo
             {
                 Humidity = 70,
                 Precipitation = 0
@@ -38,7 +38,7 @@ namespace PlaygroundWeatherStateTest
             };
 
             wetnessInfos.Add(wetnessInfo);
-            wetnessInfos.Add(wetnessInfo2);
+            wetnessInfos.Add(wetnessInfoToday);
             wetnessInfos.Add(wetnessInfo3);
 
             DryingInfo dryingInfo = new DryingInfo
@@ -104,7 +104,7 @@ namespace PlaygroundWeatherStateTest
             };
 
 
-            WetnessInfo wetnessInfo2 = new WetnessInfo
+            WetnessInfo wetnessInfoToday = new WetnessInfo
             {
                 Humidity = 80,
                 Precipitation = 16
@@ -117,7 +117,7 @@ namespace PlaygroundWeatherStateTest
             };
 
             wetnessInfos.Add(wetnessInfo);
-            wetnessInfos.Add(wetnessInfo2);
+            wetnessInfos.Add(wetnessInfoToday);
             wetnessInfos.Add(wetnessInfo3);
 
             DryingInfo dryingInfo = new DryingInfo
@@ -182,7 +182,7 @@ namespace PlaygroundWeatherStateTest
             };
 
 
-            WetnessInfo wetnessInfo2 = new WetnessInfo
+            WetnessInfo wetnessInfoToday = new WetnessInfo
             {
                 Humidity = 80,
                 Precipitation = 15
@@ -195,7 +195,7 @@ namespace PlaygroundWeatherStateTest
             };
 
             wetnessInfos.Add(wetnessInfo);
-            wetnessInfos.Add(wetnessInfo2);
+            wetnessInfos.Add(wetnessInfoToday);
             wetnessInfos.Add(wetnessInfo3);
 
             DryingInfo dryingInfo = new DryingInfo
@@ -260,7 +260,7 @@ namespace PlaygroundWeatherStateTest
             };
 
 
-            WetnessInfo wetnessInfo2 = new WetnessInfo
+            WetnessInfo wetnessInfoToday = new WetnessInfo
             {
                 Humidity = 75,
                 Precipitation = 2
@@ -273,7 +273,7 @@ namespace PlaygroundWeatherStateTest
             };
 
             wetnessInfos.Add(wetnessInfo);
-            wetnessInfos.Add(wetnessInfo2);
+            wetnessInfos.Add(wetnessInfoToday);
             wetnessInfos.Add(wetnessInfo3);
 
             DryingInfo dryingInfo = new DryingInfo
@@ -338,7 +338,7 @@ namespace PlaygroundWeatherStateTest
             };
 
 
-            WetnessInfo wetnessInfo2 = new WetnessInfo
+            WetnessInfo wetnessInfoToday = new WetnessInfo
             {
                 Humidity = 50,
                 Precipitation = 0
@@ -351,7 +351,7 @@ namespace PlaygroundWeatherStateTest
             };
 
             wetnessInfos.Add(wetnessInfo);
-            wetnessInfos.Add(wetnessInfo2);
+            wetnessInfos.Add(wetnessInfoToday);
             wetnessInfos.Add(wetnessInfo3);
 
             DryingInfo dryingInfo = new DryingInfo
@@ -416,7 +416,7 @@ namespace PlaygroundWeatherStateTest
             };
 
 
-            WetnessInfo wetnessInfo2 = new WetnessInfo
+            WetnessInfo wetnessInfoToday = new WetnessInfo
             {
                 Humidity = 50,
                 Precipitation = 15
@@ -429,7 +429,7 @@ namespace PlaygroundWeatherStateTest
             };
 
             wetnessInfos.Add(wetnessInfo);
-            wetnessInfos.Add(wetnessInfo2);
+            wetnessInfos.Add(wetnessInfoToday);
             wetnessInfos.Add(wetnessInfo3);
 
             DryingInfo dryingInfo = new DryingInfo
