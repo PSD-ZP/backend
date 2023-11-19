@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using PlaygroundWeatherState.DryCalculator;
 using PlaygroundWeatherState.Models;
+using ServicePDV.Utils.Mappers;
 using ServicePVD.Models;
 using ServicePVD.Models.Request;
 using ServicePVD.Models.Response;
@@ -19,37 +20,55 @@ namespace ServicePVD.Services.impl
             _logger = logger;
         }
 
+        public async Task<ResponseCurrentWeather> GetWeatherByHours(RequestCoordinates coordinates, int hours)
+        {
+            Weather weather = await GetCurrentAndYersterdayWeather(coordinates);
+            ResponseCurrentWeather currentWeathers = PrepareCurrentWeatherBody(weather, hours);
+
+            return currentWeathers;
+        }
+
         public async Task<int> GetDryingHours(RequestCoordinates coordinates)
         {
-            List<WetnessInfo> avgWetnessInfos = await GetWetnessDataOf2Days(coordinates);
-            ResponseCurrentWeather currentWeather = await GetLast4HourWeather(coordinates);
+            List<WetnessInfo> avgWetnessInfos = await GetWetnessDataOfLast2Days(coordinates);
+            ResponseCurrentWeather currentWeather = await GetWeatherByHours(coordinates, 4);
             List<DryingInfo> dryingInfos = PrepareDryingInfo(currentWeather);
 
             int hours = _dryingTimeCalculator.GetHoursOfDrying(avgWetnessInfos, dryingInfos);
             return hours;
         }
 
-        private List<DryingInfo> PrepareDryingInfo(ResponseCurrentWeather currentWeather)
+        public async Task<Weather> GetWeatherFromApiAsync(string apiUrl)
         {
-            List<DryingInfo> dryingInfos = new List<DryingInfo>();
-
-            foreach (var hour in currentWeather.Forecasts)
+            using HttpClient client = new HttpClient();
+            try
             {
-                DryingInfo dryingInfo = new DryingInfo
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                _logger.LogDebug($"Weather data is retrieved from {apiUrl}");
+
+                if (response.IsSuccessStatusCode)
                 {
-                    Cloudiness = hour.Clouds,
-                    Humidity = hour.Humidity,
-                    Precipitation = hour.Precipitation,
-                    Temperature = hour.Temperature
-                };
+                    _logger.LogDebug($"Return status code: {response.StatusCode}");
 
-                dryingInfos.Add(dryingInfo);
+                    string content = await response.Content.ReadAsStringAsync();
+                    Weather? data = JsonConvert.DeserializeObject<Weather>(content);
+
+                    _logger.LogDebug("Data successfully deserialised to the object.");
+
+                    return data!;
+                }
+                else
+                {
+                    throw new HttpRequestException($"Get invalid status code: {response.StatusCode}");
+                }
             }
-
-            return dryingInfos;
+            catch (Exception ex)
+            {
+                throw new HttpRequestException(ex.Message);
+            }
         }
 
-        public async Task<List<WetnessInfo>> GetWetnessDataOf2Days(RequestCoordinates coordinates)
+        private async Task<List<WetnessInfo>> GetWetnessDataOfLast2Days(RequestCoordinates coordinates)
         {
             DateTime currentDate = DateTime.Now;
             DateTime yesterday = currentDate.AddDays(-1);
@@ -83,46 +102,7 @@ namespace ServicePVD.Services.impl
             return wetnessDatas;
         }
 
-        public async Task<ResponseCurrentWeather> GetLast4HourWeather(RequestCoordinates coordinates)
-        {
-            Weather weather = await GetLast4HoursUnpreparedWeather(coordinates);
-            ResponseCurrentWeather currentWeathers = PrepareCurrentWeatherBody(weather);
-
-            return currentWeathers;
-        }
-
-        public async Task<Weather> GetWeatherFromApiAsync(string apiUrl)
-        {
-            using HttpClient client = new HttpClient();
-            try
-            {
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
-                _logger.LogDebug($"Weather data is retrieved from {apiUrl}");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    _logger.LogDebug($"Return status code: {response.StatusCode}");
-
-                    string content = await response.Content.ReadAsStringAsync();
-                    Weather? data = JsonConvert.DeserializeObject<Weather>(content);
-
-                    _logger.LogDebug("Data successfully deserialised to the object.");
-
-                    return data!;
-                }
-                else
-                {
-                    throw new HttpRequestException($"Get invalid status code: {response.StatusCode}");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new HttpRequestException(ex.Message);
-            }
-        }
-
-
-        private async Task<Weather> GetLast4HoursUnpreparedWeather(RequestCoordinates coordinates)
+        private async Task<Weather> GetCurrentAndYersterdayWeather(RequestCoordinates coordinates)
         {
             string apiUrl;
             if (string.IsNullOrEmpty(coordinates.Location))
@@ -139,21 +119,22 @@ namespace ServicePVD.Services.impl
             return weather;
         }
 
-        private ResponseCurrentWeather PrepareCurrentWeatherBody(Weather weather)
+        private ResponseCurrentWeather PrepareCurrentWeatherBody(Weather weather, int weatherHours)
         {
+            int lastHours = weatherHours;
+
             DateTime.TryParseExact(weather.Location.LocalTime, "yyyy-MM-dd HH:mm", null, DateTimeStyles.None, out DateTime parsedDateTime);
-            bool onlyToday = parsedDateTime.Hour > 20 ? false : true;
+            bool onlyToday = parsedDateTime.Hour > (24 - lastHours) ? false : true;
 
             List<ResponseCurrentForecast> currentForecasts = new List<ResponseCurrentForecast>();
-
             if (onlyToday)
             {
-                _logger.LogDebug("Response is created only from the last 4 hours of the day.");
-                IEnumerable<Hour> hours = weather.Forecast.Forecastdays[0].Hour.GetRange(parsedDateTime.Hour, 4);
+                _logger.LogDebug($"Response is created only from the last {lastHours} hours of the day.");
+                IEnumerable<Hour> hours = weather.Forecast.Forecastdays[0].Hour.GetRange(parsedDateTime.Hour, lastHours);
 
                 foreach (var hour in hours)
                 {
-                    ResponseCurrentForecast forecast = CreateResponseCurrentForecast(hour);
+                    ResponseCurrentForecast forecast = PrepareCurrentForecast(hour);
                     currentForecasts.Add(forecast);
                 }
             }
@@ -161,20 +142,20 @@ namespace ServicePVD.Services.impl
             {
                 IEnumerable<Hour> hours = weather.Forecast.Forecastdays[0].Hour.Skip(parsedDateTime.Hour);
                 int todayNumOfHours = hours.Count();
-                int tommorowNumOfHours = 4 - todayNumOfHours;
+                int tommorowNumOfHours = lastHours - todayNumOfHours;
 
                 _logger.LogDebug($"Response is created from the last {todayNumOfHours} hours of today and the first {tommorowNumOfHours} hours of tomorrow");
 
                 foreach (var hour in hours)
                 {
-                    ResponseCurrentForecast forecast = CreateResponseCurrentForecast(hour);
+                    ResponseCurrentForecast forecast = PrepareCurrentForecast(hour);
                     currentForecasts.Add(forecast);
                 }
 
                 hours = weather.Forecast.Forecastdays[1].Hour.GetRange(0, tommorowNumOfHours);
                 foreach (var hour in hours)
                 {
-                    ResponseCurrentForecast forecast = CreateResponseCurrentForecast(hour);
+                    ResponseCurrentForecast forecast = PrepareCurrentForecast(hour);
                     currentForecasts.Add(forecast);
                 }
 
@@ -189,19 +170,47 @@ namespace ServicePVD.Services.impl
             return currentWeather;
         }
 
-        private ResponseCurrentForecast CreateResponseCurrentForecast(Hour hour)
+        private List<DryingInfo> PrepareDryingInfo(ResponseCurrentWeather currentWeather)
         {
-            ResponseCurrentForecast forecast = new ResponseCurrentForecast();
-            forecast.DateTime = DateTime.ParseExact(hour.Time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
-            forecast.Temperature = double.Parse(hour.Temperature);
-            forecast.WindKmph = double.Parse(hour.WindKmph);
-            forecast.Clouds = double.Parse(hour.Cloud);
-            forecast.ChanceOfRain = double.Parse(hour.ChanceOfRain);
-            forecast.ChanceOfSnow = double.Parse(hour.ChanceOfSnow);
-            forecast.Precipitation = double.Parse(hour.Precipitation);
-            forecast.Humidity = double.Parse(hour.Humidity);
-            forecast.ConditionDestription = hour.Condition.Text;
-            forecast.IconUrl = hour.Condition.Icon;
+            List<DryingInfo> dryingInfos = new List<DryingInfo>();
+
+            foreach (var hour in currentWeather.Forecasts)
+            {
+                DryingInfo dryingInfo = new DryingInfo
+                {
+                    Cloudiness = hour.Clouds,
+                    Humidity = hour.Humidity,
+                    Precipitation = hour.Precipitation,
+                    Temperature = hour.Temperature
+                };
+
+                dryingInfos.Add(dryingInfo);
+            }
+
+            _logger.LogDebug("Created drying info entity.");
+
+            return dryingInfos;
+        }
+
+        private ResponseCurrentForecast PrepareCurrentForecast(Hour hour)
+        {
+            DateTime dateTime = DateTime.ParseExact(hour.Time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+            DayOfWeek dayOfWeek = dateTime.DayOfWeek;
+
+            ResponseCurrentForecast forecast = new ResponseCurrentForecast
+            {
+                DateTime = dateTime,
+                DayOfTheWeek = DaysMapper.TranslateDateToSk(dayOfWeek),
+                ConditionDestription = hour.Condition.Text,
+                IconUrl = hour.Condition.Icon,
+                Temperature = double.Parse(hour.Temperature),
+                WindKmph = double.Parse(hour.WindKmph),
+                Clouds = double.Parse(hour.Cloud),
+                Humidity = double.Parse(hour.Humidity),
+                Precipitation = double.Parse(hour.Precipitation),
+                ChanceOfRain = double.Parse(hour.ChanceOfRain),
+                ChanceOfSnow = double.Parse(hour.ChanceOfSnow),
+            };
 
             _logger.LogDebug("Created forecast entity.");
 

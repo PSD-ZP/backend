@@ -7,9 +7,8 @@ namespace ServicePVD.Services
 {
     public interface IWeatherService
     {
-        Task<ResponseCurrentWeather> GetLast4HourWeather(RequestCoordinates coordinates);
         Task<Weather> GetWeatherFromApiAsync(string apiUrl);
-        Task<List<WetnessInfo>> GetWetnessDataOf2Days(RequestCoordinates coordinates);
+        Task<ResponseCurrentWeather> GetWeatherByHours(RequestCoordinates coordinates, int hours);
         Task<int> GetDryingHours(RequestCoordinates coordinates);
     }
 }
