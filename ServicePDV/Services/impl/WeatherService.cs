@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using PlaygroundWeatherState.DryCalculator;
 using PlaygroundWeatherState.Models;
+using ServicePDV.Utils;
 using ServicePDV.Utils.Mappers;
 using ServicePVD.Models;
 using ServicePVD.Models.Request;
@@ -202,7 +203,7 @@ namespace ServicePVD.Services.impl
                 DateTime = dateTime,
                 DayOfTheWeek = DaysMapper.TranslateDateToSk(dayOfWeek),
                 ConditionDestription = hour.Condition.Text,
-                IconUrl = hour.Condition.Icon,
+                IconUrl = UtilFunctions.changeDimensionOfPNG(hour.Condition.Icon, 256, 256),
                 Temperature = double.Parse(hour.Temperature),
                 WindKmph = double.Parse(hour.WindKmph),
                 Clouds = double.Parse(hour.Cloud),
