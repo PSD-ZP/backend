@@ -134,5 +134,23 @@ namespace ServiceTest.Controllers
 
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
+
+        [Test]
+        [Category("IntegrationTest")]
+        public async Task GetWetnessScoreInfo_ValidInput_ReturnsOk()
+        {
+            var validCoordinates = new RequestCoordinates
+            {
+                Latitude = "40.7128",
+                Longitude = "-74.0060"
+            };
+
+            var json = JsonConvert.SerializeObject(validCoordinates);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("/Weather/GetDryingHours", content);
+
+
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+        }
     }
 }

@@ -31,8 +31,8 @@ namespace ServicePVD.Controllers
         }
 
         [HttpPost]
-        [Route("GetWetnessScore")]
-        public async Task<IActionResult> GetWetnessScoreInfo([FromBody] RequestCoordinates coordinates)
+        [Route("GetDryingHours")]
+        public async Task<IActionResult> GetDryingHours([FromBody] RequestCoordinates coordinates)
         {
             if (!CheckCoordinate(coordinates))
                 return BadRequest();

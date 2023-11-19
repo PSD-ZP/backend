@@ -2,6 +2,10 @@
 {
     public class ResponseCurrentForecast
     {
+        public string ConditionDestription { get; set; } = default!;
+
+        public string IconUrl { get; set; } = default!;
+
         public DateTime DateTime { get; set; } = default!;
 
         public double Temperature { get; set; }

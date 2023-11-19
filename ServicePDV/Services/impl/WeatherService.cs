@@ -200,6 +200,9 @@ namespace ServicePVD.Services.impl
             forecast.ChanceOfSnow = double.Parse(hour.ChanceOfSnow);
             forecast.Precipitation = double.Parse(hour.Precipitation);
             forecast.Humidity = double.Parse(hour.Humidity);
+            forecast.ConditionDestription = hour.Condition.Text;
+            forecast.IconUrl = hour.Condition.Icon;
+
             _logger.LogDebug("Created forecast entity.");
 
             return forecast;
