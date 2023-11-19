@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using PlaygroundWeatherState.DryCalculator;
 using PlaygroundWeatherState.Models;
+using ServicePDV.Utils;
+using ServicePDV.Utils.Mappers;
 using ServicePVD.Models;
 using ServicePVD.Models.Request;
 using ServicePVD.Models.Response;
@@ -200,8 +202,8 @@ namespace ServicePVD.Services.impl
             forecast.ChanceOfSnow = double.Parse(hour.ChanceOfSnow);
             forecast.Precipitation = double.Parse(hour.Precipitation);
             forecast.Humidity = double.Parse(hour.Humidity);
-            forecast.ConditionDestription = hour.Condition.Text;
-            forecast.IconUrl = hour.Condition.Icon;
+            forecast.ConditionDestription =  WeatherStateMapper.translateEnglishWeatherStateToSlovak(hour.Condition.Text);
+            forecast.IconUrl = UtilFunctions.changePngDimensionsInUrl(hour.Condition.Icon, 256);
 
             _logger.LogDebug("Created forecast entity.");
 
