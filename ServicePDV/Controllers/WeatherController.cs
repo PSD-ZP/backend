@@ -22,7 +22,8 @@ namespace ServicePVD.Controllers
             if (!CheckCoordinate(coordinates))
                 return BadRequest();
 
-            var weather = await _weatherService.GetLast4HourWeather(coordinates);
+            int hours = 5;
+            var weather = await _weatherService.GetWeatherByHours(coordinates, hours);
 
             if (weather == null)
                 return NotFound();

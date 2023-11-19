@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.Logging;
 using Moq;
 using Newtonsoft.Json;
 using ServicePVD.Controllers;
@@ -103,7 +102,7 @@ namespace ServiceTest.Controllers
             };
 
             var weatherServiceMock = new Mock<IWeatherService>();
-            weatherServiceMock.Setup(service => service.GetLast4HourWeather(validCoordinates))
+            weatherServiceMock.Setup(service => service.GetWeatherByHours(validCoordinates, 5))
                         .ReturnsAsync(expectedWeatherData);
 
             var weatherController = new WeatherController(weatherServiceMock.Object);
