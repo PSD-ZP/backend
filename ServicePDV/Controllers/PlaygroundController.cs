@@ -6,6 +6,8 @@ using ServicePVD.Services.impl;
 
 namespace ServicePDV.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class PlaygroundController : ControllerBase
     {
         private readonly IPlaygroundService _playgroundService;
