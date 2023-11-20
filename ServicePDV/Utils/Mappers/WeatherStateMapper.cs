@@ -5,7 +5,7 @@ namespace ServicePDV.Utils.Mappers
     public static class WeatherStateMapper
     {
 
-        public static string translateEnglishWeatherStateToSlovak(string englishWeatherState)
+        public static string TranslateEnglishWeatherStateToSlovak(string englishWeatherState)
         {
             switch (englishWeatherState)
             {

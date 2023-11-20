@@ -18,6 +18,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\ClothesHandler\ClothesHandler.csproj" />
+		<ProjectReference Include="..\PlaygroundHandler\PlaygroundHandler.csproj" />
 		<ProjectReference Include="..\PlaygroundWeatherState\PlaygroundWeatherState.csproj" />
 	</ItemGroup>
 	

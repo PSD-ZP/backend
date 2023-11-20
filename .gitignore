@@ -32,3 +32,5 @@
 .vscode/tasks.json
 /PlaygroundWeatherState/bin/Release/net6.0
 /PlaygroundWeatherStateTest/bin/Release/net6.0
+/PlaygroundHandler/obj
+/PlaygroundHandler/bin/Debug/net6.0
