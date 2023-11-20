@@ -47,7 +47,7 @@ or
 ### Get playgrounds by city/location
 
 
-[URI] : **/Playground/GetPlaygroundsByCity?location={city}
+[URI] : **/Playground/GetPlaygroundsByCity?location={city}**
 city - f.e. Kosice, Bratislava
 
 [Method] : **GET**
