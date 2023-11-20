@@ -202,7 +202,7 @@ namespace ServicePVD.Services.impl
             {
                 DateTime = dateTime,
                 DayOfTheWeek = DaysMapper.TranslateDateToSk(dayOfWeek),
-                ConditionDestription = hour.Condition.Text,
+                ConditionDestription = WeatherStateMapper.translateEnglishWeatherStateToSlovak(hour.Condition.Text),
                 IconUrl = UtilFunctions.changeDimensionOfPNG(hour.Condition.Icon, 128, 128),
                 Temperature = double.Parse(hour.Temperature),
                 WindKmph = double.Parse(hour.WindKmph),
