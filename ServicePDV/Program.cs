@@ -1,6 +1,8 @@
 using ClothesHandler.Calculator;
 using PlaygroundWeatherState.DryCalculator;
 using PlaygroundWeatherState.WetnessScoreCalculator;
+using ServicePDV.Services;
+using ServicePDV.Services.impl;
 using ServicePVD.Services;
 using ServicePVD.Services.impl;
 
@@ -26,6 +28,7 @@ builder.Services.AddSingleton<IDryingTimeCalculator, DryingTimeCalculator>();
 builder.Services.AddSingleton<IRecommendationCalculator, RecommendationCalculator>();
 builder.Services.AddScoped<IClothesService, ClothesService>();
 builder.Services.AddScoped<IWeatherService, WeatherService>();
+builder.Services.AddScoped<IPlaygroundService, PlaygroundService>();
 
 var app = builder.Build();
 

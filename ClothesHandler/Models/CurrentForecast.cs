@@ -1,5 +1,4 @@
-﻿
-namespace ClothesHandler.Calculator
+﻿namespace ClothesHandler.Models
 {
     internal class CurrentForecast
     {

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
-using PlaygroundWeatherState.DryCalculator;
 using PlaygroundWeatherState.Models;
+using ServicePDV.Models.Response;
+using ServicePDV.Utils;
 using ServicePDV.Utils.Mappers;
 using ServicePVD.Models;
 using ServicePVD.Models.Request;
@@ -12,11 +13,9 @@ namespace ServicePVD.Services.impl
     public class WeatherService : IWeatherService
     {
         private readonly ILogger<WeatherService> _logger;
-        private readonly IDryingTimeCalculator _dryingTimeCalculator;
 
-        public WeatherService(IDryingTimeCalculator dryingTimeCalculator, ILogger<WeatherService> logger)
+        public WeatherService(ILogger<WeatherService> logger)
         {
-            _dryingTimeCalculator = dryingTimeCalculator;
             _logger = logger;
         }
 
@@ -28,14 +27,15 @@ namespace ServicePVD.Services.impl
             return currentWeathers;
         }
 
-        public async Task<int> GetDryingHours(RequestCoordinates coordinates)
+        public async Task<ResponseDryingInfo> GetDryingInfo(RequestCoordinates coordinates)
         {
             List<WetnessInfo> avgWetnessInfos = await GetWetnessDataOfLast2Days(coordinates);
             ResponseCurrentWeather currentWeather = await GetWeatherByHours(coordinates, 4);
             List<DryingInfo> dryingInfos = PrepareDryingInfo(currentWeather);
 
-            int hours = _dryingTimeCalculator.GetHoursOfDrying(avgWetnessInfos, dryingInfos);
-            return hours;
+            ResponseDryingInfo responseDryingInfo = new ResponseDryingInfo(avgWetnessInfos, dryingInfos);
+
+            return responseDryingInfo;
         }
 
         public async Task<Weather> GetWeatherFromApiAsync(string apiUrl)
@@ -201,8 +201,8 @@ namespace ServicePVD.Services.impl
             {
                 DateTime = dateTime,
                 DayOfTheWeek = DaysMapper.TranslateDateToSk(dayOfWeek),
-                ConditionDestription = hour.Condition.Text,
-                IconUrl = hour.Condition.Icon,
+                ConditionDestription = WeatherStateMapper.TranslateEnglishWeatherStateToSlovak(hour.Condition.Text),
+                IconUrl = UtilFunctions.ChangeDimensionOfPNG(hour.Condition.Icon, 128, 128),
                 Temperature = double.Parse(hour.Temperature),
                 WindKmph = double.Parse(hour.WindKmph),
                 Clouds = double.Parse(hour.Cloud),

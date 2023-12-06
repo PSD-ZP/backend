@@ -1,4 +1,4 @@
-﻿using ClothesHandler.Calculator;
+﻿using ClothesHandler.Models;
 
 namespace ClothesHandler.Stages
 {

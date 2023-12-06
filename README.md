@@ -6,7 +6,7 @@ FOR EVERY ISSUE CREATE BRANCH AND THAN PR
 
 ### Get weahter from last 4 hours
 
-[URI] : **/GetWeatherOfLastHours**
+[URI] : **/Weather/GetWeatherOfLastHours**
 
 [Method] : **POST**
 
@@ -28,7 +28,7 @@ or
 
 ### Get clothes
 
-[URI] : **/GetClothes**
+[URI] : **/Clothes/GetClothes**
 
 [Method] : **POST**
 
@@ -43,3 +43,11 @@ or
   "snow": 90
 }
 ```
+
+### Get playgrounds by city/location
+
+
+[URI] : **/Playground/GetPlaygroundsByCity?location={city}**
+city - f.e. Kosice, Bratislava
+
+[Method] : **GET**
