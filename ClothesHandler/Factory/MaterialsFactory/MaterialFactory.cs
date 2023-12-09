@@ -49,6 +49,14 @@ namespace ClothesHandler.Factory.MaterialsFactory
                         WindResistance = 80,
                         WaterResistance = 30
                     };
+                case MaterialsEnum.Softshell:
+                    return new Material
+                    {
+                        Name = "Softshell",
+                        TemperatureLeakiness = 30,
+                        WindResistance = 90,
+                        WaterResistance = 80
+                    };
                 default:
                     throw new ArgumentException("Invalid material type");
             }

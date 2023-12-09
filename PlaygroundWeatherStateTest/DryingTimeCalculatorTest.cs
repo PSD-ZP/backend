@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Moq;
+using PlaygroundHandler.Models;
 using PlaygroundWeatherState.DryCalculator;
 using PlaygroundWeatherState.Models;
 using PlaygroundWeatherState.WetnessScoreCalculator;
@@ -79,12 +80,55 @@ namespace PlaygroundWeatherStateTest
             dryingInfos.Add(dryingInfo3);
             dryingInfos.Add(dryingInfo4);
 
+            List<Playground> playgrounds = new List<Playground>();
+
+            Playground playground1 = new Playground
+            {
+                Name = "Ocelova smykalka",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground2 = new Playground
+            {
+                Name = "Pieskovisko",
+                Material = PlaygroundHandler.Enums.Materials.Sand,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground3 = new Playground
+            {
+                Name = "Hojdaci konik",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground4 = new Playground
+            {
+                Name = "Preliezacka",
+                Material = PlaygroundHandler.Enums.Materials.Plastic,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            playgrounds.Add(playground1);
+            playgrounds.Add(playground2);
+            playgrounds.Add(playground3);
+            playgrounds.Add(playground4);
+
             DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
             wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.05);
 
-            int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
+            playgrounds = dryingTimeCalculator.GetPlaygrounds(wetnessInfos, dryingInfos, playgrounds);
 
-            Assert.IsTrue(dryingHours != -1);
+            foreach (Playground playground in playgrounds)
+            {
+                Assert.IsTrue(playground.DryTime != -1);
+            }
+
         }
 
         [Test]
@@ -153,17 +197,54 @@ namespace PlaygroundWeatherStateTest
             };
 
 
-            dryingInfos.Add(dryingInfo);
-            dryingInfos.Add(dryingInfo2);
-            dryingInfos.Add(dryingInfo3);
-            dryingInfos.Add(dryingInfo4);
+            List<Playground> playgrounds = new List<Playground>();
+
+            Playground playground1 = new Playground
+            {
+                Name = "Ocelova smykalka",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground2 = new Playground
+            {
+                Name = "Pieskovisko",
+                Material = PlaygroundHandler.Enums.Materials.Sand,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground3 = new Playground
+            {
+                Name = "Hojdaci konik",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground4 = new Playground
+            {
+                Name = "Preliezacka",
+                Material = PlaygroundHandler.Enums.Materials.Plastic,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            playgrounds.Add(playground1);
+            playgrounds.Add(playground2);
+            playgrounds.Add(playground3);
+            playgrounds.Add(playground4);
 
             DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
             wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.795);
 
-            int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
+            playgrounds = dryingTimeCalculator.GetPlaygrounds(wetnessInfos, dryingInfos, playgrounds);
 
-            Assert.IsTrue(dryingHours != -1);
+            foreach (Playground playground in playgrounds)
+            {
+                Assert.IsTrue(playground.DryTime == -1);
+            }
         }
 
         [Test]
@@ -236,12 +317,55 @@ namespace PlaygroundWeatherStateTest
             dryingInfos.Add(dryingInfo3);
             dryingInfos.Add(dryingInfo4);
 
+            List<Playground> playgrounds = new List<Playground>();
+
+            Playground playground1 = new Playground
+            {
+                Name = "Ocelova smykalka",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground2 = new Playground
+            {
+                Name = "Pieskovisko",
+                Material = PlaygroundHandler.Enums.Materials.Sand,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground3 = new Playground
+            {
+                Name = "Hojdaci konik",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground4 = new Playground
+            {
+                Name = "Preliezacka",
+                Material = PlaygroundHandler.Enums.Materials.Plastic,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            playgrounds.Add(playground1);
+            playgrounds.Add(playground2);
+            playgrounds.Add(playground3);
+            playgrounds.Add(playground4);
+
             DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
-            wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.758);
+            wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.05);
 
-            int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
+            playgrounds = dryingTimeCalculator.GetPlaygrounds(wetnessInfos, dryingInfos, playgrounds);
 
-            Assert.IsTrue(dryingHours == -1);
+            foreach (Playground playground in playgrounds)
+            {
+                Console.WriteLine(playground.Name);
+                Assert.IsTrue(playground.DryTime != -1);
+            }
         }
 
         [Test]
@@ -314,12 +438,54 @@ namespace PlaygroundWeatherStateTest
             dryingInfos.Add(dryingInfo3);
             dryingInfos.Add(dryingInfo4);
 
+            List<Playground> playgrounds = new List<Playground>();
+
+            Playground playground1 = new Playground
+            {
+                Name = "Ocelova smykalka",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground2 = new Playground
+            {
+                Name = "Pieskovisko",
+                Material = PlaygroundHandler.Enums.Materials.Sand,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground3 = new Playground
+            {
+                Name = "Hojdaci konik",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground4 = new Playground
+            {
+                Name = "Preliezacka",
+                Material = PlaygroundHandler.Enums.Materials.Plastic,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            playgrounds.Add(playground1);
+            playgrounds.Add(playground2);
+            playgrounds.Add(playground3);
+            playgrounds.Add(playground4);
+
             DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
             wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.152);
 
-            int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
+            playgrounds = dryingTimeCalculator.GetPlaygrounds(wetnessInfos, dryingInfos, playgrounds);
 
-            Assert.IsTrue(dryingHours != -1);
+            foreach (Playground playground in playgrounds)
+            {
+                Assert.IsTrue(playground.DryTime != -1);
+            }
         }
 
         [Test]
@@ -392,12 +558,54 @@ namespace PlaygroundWeatherStateTest
             dryingInfos.Add(dryingInfo3);
             dryingInfos.Add(dryingInfo4);
 
+            List<Playground> playgrounds = new List<Playground>();
+
+            Playground playground1 = new Playground
+            {
+                Name = "Ocelova smykalka",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground2 = new Playground
+            {
+                Name = "Pieskovisko",
+                Material = PlaygroundHandler.Enums.Materials.Sand,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground3 = new Playground
+            {
+                Name = "Hojdaci konik",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground4 = new Playground
+            {
+                Name = "Preliezacka",
+                Material = PlaygroundHandler.Enums.Materials.Plastic,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            playgrounds.Add(playground1);
+            playgrounds.Add(playground2);
+            playgrounds.Add(playground3);
+            playgrounds.Add(playground4);
+
             DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
             wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.033);
 
-            int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
+            playgrounds = dryingTimeCalculator.GetPlaygrounds(wetnessInfos, dryingInfos, playgrounds);
 
-            Assert.IsTrue(dryingHours != -1);
+            foreach (Playground playground in playgrounds)
+            {
+                Assert.IsTrue(playground.DryTime != -1);
+            }
         }
 
         [Test]
@@ -470,12 +678,54 @@ namespace PlaygroundWeatherStateTest
             dryingInfos.Add(dryingInfo3);
             dryingInfos.Add(dryingInfo4);
 
+            List<Playground> playgrounds = new List<Playground>();
+
+            Playground playground1 = new Playground
+            {
+                Name = "Ocelova smykalka",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground2 = new Playground
+            {
+                Name = "Pieskovisko",
+                Material = PlaygroundHandler.Enums.Materials.Sand,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground3 = new Playground
+            {
+                Name = "Hojdaci konik",
+                Material = PlaygroundHandler.Enums.Materials.Metal,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            Playground playground4 = new Playground
+            {
+                Name = "Preliezacka",
+                Material = PlaygroundHandler.Enums.Materials.Plastic,
+                Description = "foo",
+                DryTime = 0
+            };
+
+            playgrounds.Add(playground1);
+            playgrounds.Add(playground2);
+            playgrounds.Add(playground3);
+            playgrounds.Add(playground4);
+
             DryingTimeCalculator dryingTimeCalculator = new DryingTimeCalculator(wetnessScore.Object, Mock.Of<ILogger<DryingTimeCalculator>>());
             wetnessScore.Setup(service => service.GetWetnessScore(wetnessInfos)).Returns(0.708);
 
-            int dryingHours = dryingTimeCalculator.GetHoursOfDrying(wetnessInfos, dryingInfos);
+            playgrounds = dryingTimeCalculator.GetPlaygrounds(wetnessInfos, dryingInfos, playgrounds);
 
-            Assert.IsTrue(dryingHours == -1);
+            foreach (Playground playground in playgrounds)
+            {
+                Assert.IsTrue(playground.DryTime == -1);
+            }
         }
     }
 

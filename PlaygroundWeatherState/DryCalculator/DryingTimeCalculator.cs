@@ -45,13 +45,13 @@ namespace PlaygroundWeatherState.DryCalculator
                     return 1;
 
                 case PlaygroundHandler.Enums.Materials.Metal:
-                    return 0.9;
+                    return 1.1;
 
                 case PlaygroundHandler.Enums.Materials.Wood:
-                    return 0.8;
+                    return 1.2;
 
                 case PlaygroundHandler.Enums.Materials.Sand:
-                    return 0.7;
+                    return 1.5;
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(playground.Material), "Unhandled material type");
