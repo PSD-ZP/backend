@@ -19,13 +19,13 @@ namespace ClothesHandlerTest
             foreach (ClothesItem clothes in body.Head)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("äiltovka"));
+                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("≈†iltovka"));
             }
 
             foreach (ClothesItem clothes in body.Body)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("Mikina") || clothes.Name.Equals("TriËko"));
+                Assert.IsTrue(clothes.Name.Equals("Mikina") || clothes.Name.Equals("Triƒçko"));
             }
 
             foreach (ClothesItem clothes in body.Legs)
@@ -59,13 +59,13 @@ namespace ClothesHandlerTest
             foreach (ClothesItem clothes in body.Head)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("äiltovka"));
+                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("≈†iltovka"));
             }
 
             foreach (ClothesItem clothes in body.Body)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("Mikina") || clothes.Name.Equals("TriËko"));
+                Assert.IsTrue(clothes.Name.Equals("Mikina") || clothes.Name.Equals("Triƒçko"));
             }
 
             foreach (ClothesItem clothes in body.Legs)
@@ -77,13 +77,13 @@ namespace ClothesHandlerTest
             foreach (ClothesItem clothes in body.Shoes)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("Tenisky") || clothes.Name.Equals("Gum·ky"));
+                Assert.IsTrue(clothes.Name.Equals("Tenisky") || clothes.Name.Equals("Gum√°ky"));
             }
 
             foreach (ClothesItem clothes in body.Accessories)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("D·ûdnik") || clothes.Name.Equals("Pröiplaöù"));
+                Assert.IsTrue(clothes.Name.Equals("D√°≈ædnik") || clothes.Name.Equals("Pr≈°ipla≈°≈•"));
             }
         }
 
@@ -98,25 +98,25 @@ namespace ClothesHandlerTest
             foreach (ClothesItem clothes in body.Head)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("äiltovka"));
+                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("≈†iltovka"));
             }
 
             foreach (ClothesItem clothes in body.Body)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("TriËko"));
+                Assert.IsTrue(clothes.Name.Equals("Triƒçko"));
             }
 
             foreach (ClothesItem clothes in body.Legs)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("Rifle") || clothes.Name.Equals("Kraùasy"));
+                Assert.IsTrue(clothes.Name.Equals("Rifle") || clothes.Name.Equals("Kra≈•asy"));
             }
 
             foreach (ClothesItem clothes in body.Shoes)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("Tenisky") || clothes.Name.Equals("Sand·le"));
+                Assert.IsTrue(clothes.Name.Equals("Tenisky") || clothes.Name.Equals("Sand√°le"));
             }
 
             foreach (ClothesItem clothes in body.Accessories)
@@ -138,31 +138,31 @@ namespace ClothesHandlerTest
             foreach (ClothesItem clothes in body.Head)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("äiltovka"));
+                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("≈†iltovka"));
             }
 
             foreach (ClothesItem clothes in body.Body)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("TriËko"));
+                Assert.IsTrue(clothes.Name.Equals("Triƒçko"));
             }
 
             foreach (ClothesItem clothes in body.Legs)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("Rifle") || clothes.Name.Equals("Kraùasy"));
+                Assert.IsTrue(clothes.Name.Equals("Rifle") || clothes.Name.Equals("Kra≈•asy"));
             }
 
             foreach (ClothesItem clothes in body.Shoes)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("Tenisky") || clothes.Name.Equals("Gum·ky"));
+                Assert.IsTrue(clothes.Name.Equals("Tenisky") || clothes.Name.Equals("Gum√°ky"));
             }
 
             foreach (ClothesItem clothes in body.Accessories)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("D·ûdnik") || clothes.Name.Equals("Pröiplaöù"));
+                Assert.IsTrue(clothes.Name.Equals("D√°≈ædnik") || clothes.Name.Equals("Pr≈°ipla≈°≈•"));
             }
 
         }
@@ -178,13 +178,13 @@ namespace ClothesHandlerTest
             foreach (ClothesItem clothes in body.Head)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("äiltovka"));
+                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("≈†iltovka"));
             }
 
             foreach (ClothesItem clothes in body.Body)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("TriËko") || clothes.Name.Equals("Mikina") || clothes.Name.Equals("Prechodn· bunda"));
+                Assert.IsTrue(clothes.Name.Equals("Triƒçko") || clothes.Name.Equals("Mikina") || clothes.Name.Equals("Prechodn√° bunda"));
             }
 
             foreach (ClothesItem clothes in body.Legs)
@@ -219,31 +219,31 @@ namespace ClothesHandlerTest
             foreach (ClothesItem clothes in body.Head)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("Prechodna Ëiapka"));
+                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("Prechodna ƒçiapka"));
             }
 
             foreach (ClothesItem clothes in body.Body)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("TriËko") || clothes.Name.Equals("Mikina") || clothes.Name.Equals("Softshell bunda"));
+                Assert.IsTrue(clothes.Name.Equals("Triƒçko") || clothes.Name.Equals("Mikina") || clothes.Name.Equals("Softshell bunda"));
             }
 
             foreach (ClothesItem clothes in body.Legs)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("Rifle") || clothes.Name.Equals("Kraùasy"));
+                Assert.IsTrue(clothes.Name.Equals("Rifle") || clothes.Name.Equals("Kra≈•asy"));
             }
 
             foreach (ClothesItem clothes in body.Shoes)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("Tenisky") || clothes.Name.Equals("Gum·ky"));
+                Assert.IsTrue(clothes.Name.Equals("Tenisky") || clothes.Name.Equals("Gum√°ky"));
             }
 
             foreach (ClothesItem clothes in body.Accessories)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("D·ûdnik") || clothes.Name.Equals("Pröiplaöù"));
+                Assert.IsTrue(clothes.Name.Equals("D√°≈ædnik") || clothes.Name.Equals("Pr≈°ipla≈°≈•"));
             }
 
         }
@@ -259,14 +259,14 @@ namespace ClothesHandlerTest
             foreach (ClothesItem clothes in body.Head)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("Zimna Ëiapka"));
+                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("Zimna ƒçiapka"));
             }
 
             foreach (ClothesItem clothes in body.Body)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("TriËko") || clothes.Name.Equals("Mikina") || clothes.Name.Equals("HrubÈ body")
-                    || clothes.Name.Equals("Zimn· bunda"));
+                Assert.IsTrue(clothes.Name.Equals("Triƒçko") || clothes.Name.Equals("Mikina") || clothes.Name.Equals("Hrub√© body")
+                    || clothes.Name.Equals("Zimn√° bunda"));
             }
 
             foreach (ClothesItem clothes in body.Legs)
@@ -278,7 +278,7 @@ namespace ClothesHandlerTest
             foreach (ClothesItem clothes in body.Shoes)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("ZimnÈ top·nky"));
+                Assert.IsTrue(clothes.Name.Equals("Zimn√© top√°nky"));
             }
 
             foreach (ClothesItem clothes in body.Accessories)
@@ -300,14 +300,14 @@ namespace ClothesHandlerTest
             foreach (ClothesItem clothes in body.Head)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("Zimna Ëiapka"));
+                Assert.IsTrue(clothes.Name.Equals("NONE") || clothes.Name.Equals("Zimna ƒçiapka"));
             }
 
             foreach (ClothesItem clothes in body.Body)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("TriËko") || clothes.Name.Equals("Mikina") || clothes.Name.Equals("HrubÈ body")
-                    || clothes.Name.Equals("Zimn· bunda"));
+                Assert.IsTrue(clothes.Name.Equals("Triƒçko") || clothes.Name.Equals("Mikina") || clothes.Name.Equals("Hrub√© body")
+                    || clothes.Name.Equals("Zimn√° bunda"));
             }
 
             foreach (ClothesItem clothes in body.Legs)
@@ -319,13 +319,13 @@ namespace ClothesHandlerTest
             foreach (ClothesItem clothes in body.Shoes)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("ZimnÈ top·nky"));
+                Assert.IsTrue(clothes.Name.Equals("Zimn√© top√°nky"));
             }
 
             foreach (ClothesItem clothes in body.Accessories)
             {
                 Console.WriteLine(clothes.Name);
-                Assert.IsTrue(clothes.Name.Equals("Rukavice") || clothes.Name.Equals("ä·l"));
+                Assert.IsTrue(clothes.Name.Equals("Rukavice") || clothes.Name.Equals("≈†√°l"));
             }
 
         }
