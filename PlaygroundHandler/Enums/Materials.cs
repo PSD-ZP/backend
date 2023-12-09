@@ -3,7 +3,8 @@
     public enum Materials
     {
         Plastic,
+        Metal,
         Wood,
-        Metal
+        Sand
     }
 }

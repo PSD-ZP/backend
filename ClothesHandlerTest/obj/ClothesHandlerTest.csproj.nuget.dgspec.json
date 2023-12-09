@@ -1,0 +1,150 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\!psd-zp\\ClothesHandlerTest\\ClothesHandlerTest.csproj": {}
+  },
+  "projects": {
+    "D:\\!psd-zp\\ClothesHandlerTest\\ClothesHandlerTest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\!psd-zp\\ClothesHandlerTest\\ClothesHandlerTest.csproj",
+        "projectName": "ClothesHandlerTest",
+        "projectPath": "D:\\!psd-zp\\ClothesHandlerTest\\ClothesHandlerTest.csproj",
+        "packagesPath": "C:\\Users\\z004pmpc\\.nuget\\packages\\",
+        "outputPath": "D:\\!psd-zp\\ClothesHandlerTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\z004pmpc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "\\\\skkscs522a.ad005.onehc.net\\CHP_SHARE\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/CommonHostPlatform/RFI/_packaging/RemoteFullInstallation/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/CommonHostPlatform/_packaging/chp/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\!psd-zp\\ClothesHandler\\ClothesHandler.csproj": {
+                "projectPath": "D:\\!psd-zp\\ClothesHandler\\ClothesHandler.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.1.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\!psd-zp\\ClothesHandler\\ClothesHandler.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\!psd-zp\\ClothesHandler\\ClothesHandler.csproj",
+        "projectName": "ClothesHandler",
+        "projectPath": "D:\\!psd-zp\\ClothesHandler\\ClothesHandler.csproj",
+        "packagesPath": "C:\\Users\\z004pmpc\\.nuget\\packages\\",
+        "outputPath": "D:\\!psd-zp\\ClothesHandler\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\z004pmpc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "\\\\skkscs522a.ad005.onehc.net\\CHP_SHARE\\packages": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/CommonHostPlatform/RFI/_packaging/RemoteFullInstallation/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/CommonHostPlatform/_packaging/chp/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

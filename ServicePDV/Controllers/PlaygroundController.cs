@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServicePDV.Services;
 using ServicePVD.Models.Request;
-using ServicePVD.Services;
-using ServicePVD.Services.impl;
 
 namespace ServicePDV.Controllers
 {
@@ -17,18 +15,24 @@ namespace ServicePDV.Controllers
             _playgroundService = playgroundService;
         }
 
-        [HttpGet]
-        [Route("GetPlaygroundsByCity")]
-        public async Task<IActionResult> GetPlaygroundsByCity(string location)
+        [HttpPost]
+        [Route("GetPlaygrounds")]
+        public async Task<IActionResult> GetPlaygroundsByCity([FromBody] RequestCoordinates coordinates)
         {
-            if (string.IsNullOrEmpty(location))
-            {
+            if (!CheckCoordinate(coordinates))
                 return BadRequest();
-            }
 
-            var playgrounds = await _playgroundService.GetPlaygrounds(location);
+            var playgrounds = await _playgroundService.GetPlaygrounds(coordinates);
 
             return Ok(playgrounds);
+        }
+
+        private static bool CheckCoordinate(RequestCoordinates coordinates)
+        {
+            if ((coordinates.Latitude == null && coordinates.Longitude != null) || (coordinates.Latitude != null && coordinates.Longitude == null))
+                return false;
+
+            return ((coordinates.Latitude != null && coordinates.Longitude != null) || coordinates.Location != null);
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using PlaygroundHandler.Models;
 using PlaygroundWeatherState.Models;
 using PlaygroundWeatherState.WetnessScoreCalculator;
 
@@ -15,19 +16,53 @@ namespace PlaygroundWeatherState.DryCalculator
             _logger = logger;
         }
 
-        public int GetHoursOfDrying(List<WetnessInfo> avgWetnessInfos, List<DryingInfo> dryingInfos)
+        public List<Playground> GetPlaygrounds(List<WetnessInfo> avgWetnessInfos, List<DryingInfo> dryingInfos, List<Playground> playgrounds)
         {
             double wetnessScore = _wetnessScore.GetWetnessScore(avgWetnessInfos);
 
-            int hours = DryingTimeCalculating(1, wetnessScore, dryingInfos);
+            playgrounds = DryingTimeCalculating(playgrounds, wetnessScore, dryingInfos);
 
-            return hours;
+            return playgrounds;
         }
 
-        private int DryingTimeCalculating(double materialWeight, double initWetnessScore, List<DryingInfo> dryingInfos)
+        private List<Playground> DryingTimeCalculating(List<Playground> playgrounds, double initWetnessScore, List<DryingInfo> dryingInfos)
         {
-            int dryingHours = 0;
+            foreach (Playground playground in playgrounds)
+            {
+                double materialWeight = GetMaterialWeight(playground);
+                playground.DryTime = GetDryingHours(dryingInfos, materialWeight, initWetnessScore);
+            }
+
+            return playgrounds;
+
+        }
+
+        private static double GetMaterialWeight(Playground playground)
+        {
+            switch (playground.Material) 
+            {
+                case PlaygroundHandler.Enums.Materials.Plastic:
+                    return 1;
+
+                case PlaygroundHandler.Enums.Materials.Metal:
+                    return 1.1;
+
+                case PlaygroundHandler.Enums.Materials.Wood:
+                    return 1.2;
+
+                case PlaygroundHandler.Enums.Materials.Sand:
+                    return 1.5;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(playground.Material), "Unhandled material type");
+            }
+
+        }
+
+        private int GetDryingHours(List<DryingInfo> dryingInfos, double materialWeight, double initWetnessScore)
+        {
             double currentWetnessScore = initWetnessScore;
+            int dryingHours = 0;
 
             foreach (var dryingInfo in dryingInfos)
             {
@@ -78,7 +113,6 @@ namespace PlaygroundWeatherState.DryCalculator
             }
 
             return dryingHours;
-
         }
 
         public static double NormalizeValue(double value, double min, double max)

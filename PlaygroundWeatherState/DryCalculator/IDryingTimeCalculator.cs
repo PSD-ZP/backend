@@ -1,9 +1,10 @@
-﻿using PlaygroundWeatherState.Models;
+﻿using PlaygroundHandler.Models;
+using PlaygroundWeatherState.Models;
 
 namespace PlaygroundWeatherState.DryCalculator
 {
     public interface IDryingTimeCalculator
     {
-        int GetHoursOfDrying(List<WetnessInfo> avgWetnessInfos, List<DryingInfo> dryingInfos);
+        List<Playground> GetPlaygrounds(List<WetnessInfo> avgWetnessInfos, List<DryingInfo> dryingInfos, List<Playground> playgrounds);
     }
 }

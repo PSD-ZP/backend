@@ -31,18 +31,6 @@ namespace ServicePVD.Controllers
             return Ok(weather);
         }
 
-        [HttpPost]
-        [Route("GetDryingHours")]
-        public async Task<IActionResult> GetDryingHours([FromBody] RequestCoordinates coordinates)
-        {
-            if (!CheckCoordinate(coordinates))
-                return BadRequest();
-
-            var weather = await _weatherService.GetDryingHours(coordinates);
-
-            return Ok(weather);
-        }
-
         private static bool CheckCoordinate(RequestCoordinates coordinates)
         {
             if ((coordinates.Latitude == null && coordinates.Longitude != null) || (coordinates.Latitude != null && coordinates.Longitude == null))

@@ -1,65 +1,63 @@
 ﻿using PlaygroundHandler.Models;
+using PlaygroundWeatherState.DryCalculator;
+using ServicePDV.Models.Response;
+using ServicePVD.Models.Request;
 using ServicePVD.Services;
 
 namespace ServicePDV.Services.impl
 {
     public class PlaygroundService : IPlaygroundService
     {
-        public async Task<List<Playground>> GetPlaygrounds(string city = null)
+        private readonly IWeatherService _weatherService;
+        private readonly IDryingTimeCalculator _dryingTimeCalculator;
+
+        public PlaygroundService(IWeatherService weatherService, IDryingTimeCalculator dryingTimeCalculator) 
         {
-            List<Playground> playgrounds = new List<Playground>();
+            _weatherService = weatherService;
+            _dryingTimeCalculator = dryingTimeCalculator;
+        }
 
-            Rating rating = new Rating
-            {
-                AverageRating = 3,
-                PathToRatingIcon = "noPathSpecified/",
-                TimesRated = 10,
-                UserRatings = new List<UserRating>
-                {
-                    new UserRating
-                    {
-                        Comment = "koment",
-                        DateAdded = "10.10.2013",
-                        FromUser = "Johny",
-                        Rating = 4
-                    },
-                    new UserRating
-                    {
-                        Comment = "koment 01",
-                        DateAdded = "10.12.2025",
-                        FromUser = "Jake",
-                        Rating = 2
-                    }
-                }
-            };
-            
-            Playground playground = new Playground
-            {
-                City = "Kosice",
-                Address = "ADRESA",
-                Description = "Dobre ihrisko",
-                Name = "Ihrisko v Kosiciach",
-                Rating = rating,
-                PlaygroundProps = new List<PlaygroundProp> { 
-                    new PlaygroundProp
-                    {
-                        Material = PlaygroundHandler.Enums.Materials.Wood,
-                        Name = "Preliezka",
-                        PathToPlaygroundPropIcon = "NoPathSpecified"
-                    },
-                    new PlaygroundProp
-                    {
-                        Material = PlaygroundHandler.Enums.Materials.Metal,
-                        Name = "Smykalka",
-                        PathToPlaygroundPropIcon = "NoPathSpecified"
-                    }
-                }
-            };
+        public async Task<List<Playground>> GetPlaygrounds(RequestCoordinates coordinates)
+        {
 
-            playgrounds.Add(playground);
+            ResponseDryingInfo responseDryingInfo = await _weatherService.GetDryingInfo(coordinates);
+            List<Playground> playgrounds = CreateTempPlayground();
+
+            playgrounds = _dryingTimeCalculator.GetPlaygrounds(responseDryingInfo.AvgWetnessInfos, responseDryingInfo.DryingInfos, playgrounds);
 
             return playgrounds;
         }
 
+        private static List<Playground> CreateTempPlayground()
+        {
+            Playground smykalka = new Playground
+            {
+                Name = "Šmýkalka",
+                Material = PlaygroundHandler.Enums.Materials.Metal
+            };
+
+            Playground hojdacka = new Playground
+            {
+                Name = "Hojdačka",
+                Material = PlaygroundHandler.Enums.Materials.Plastic
+            };
+
+            Playground pieskovisko = new Playground
+            {
+                Name = "Pieskovisko",
+                Material = PlaygroundHandler.Enums.Materials.Sand
+            };
+
+            Playground hojdaciKonik = new Playground
+            {
+                Name = "Hojdací koník",
+                Material = PlaygroundHandler.Enums.Materials.Wood
+            };
+
+
+            List<Playground> playgrounds = new List<Playground>() { smykalka, hojdacka, pieskovisko, hojdaciKonik };
+
+            return playgrounds;
+        }
     }
 }
