@@ -47,7 +47,57 @@ or
 ### Get playgrounds by city/location
 
 
-[URI] : **/Playground/GetPlaygroundsByCity?location={city}**
-city - f.e. Kosice, Bratislava
+[URI] : **/Playground/GetPlaygrounds
 
-[Method] : **GET**
+[Method] : **POST**
+
+[BODY] : 
+
+```json
+{
+  "lat": "40.7128",
+  "lon": "-74.0060"
+}
+```
+or
+
+```json
+{
+  "location": "New York"
+}
+```
+[RESPONSE]
+
+```json
+[
+    {
+        "name": "Šmýkalka",
+        "material": 1,
+        "dryTime": -1.0,
+        "description": null
+    },
+    {
+        "name": "Hojdačka",
+        "material": 0,
+        "dryTime": -1.0,
+        "description": null
+    },
+    {
+        "name": "Pieskovisko",
+        "material": 3,
+        "dryTime": -1.0,
+        "description": null
+    },
+    {
+        "name": "Hojdací koník",
+        "material": 2,
+        "dryTime": -1.0,
+        "description": null
+    }
+]
+```
+
+dryTime returns:
+- -1 if dry time is more than 4 hours
+or
+- number of hours drying
